@@ -1,0 +1,39 @@
+<%= link_to 'Back', matches_path, class: 'btn btn-secondary mb-3' %>
+<div class="row">
+	<div class="col-md-3">
+		<div class="card">
+			<div class="card-body">
+				<h4 class="card-title">Editing Match</h4>
+				<%= render 'form', match: @match %>
+				<%= link_to 'Destroy', @match, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block mt-1" %>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-9">
+		<div class="card">
+			<div class="card-body text-center">
+				<!-- IDEA: Maybe show ALL the category matches highlighting the match erdited.... -->
+				<h2 class="card-title m-4">
+			        Round <%= @match.round %> - <%=@match.category.title %> 
+			    </h2>
+			    <h3 class="text-secondary mb-4">
+				  <%= @match.player_1.name %> (<%= @match.player_1.rank %>)
+				  vs
+				  <%= @match.player_2.name %> (<%= @match.player_2.rank %>)
+				</h3>
+				<h3 class="text-warning mb-4"> 
+					<% if @match.winner.present? %>
+			        	Winner: <%= @match.winner.name %> 
+			        <% end %>
+			    </h3> 
+				<p> 
+			        <%= @match.date %> 
+			    </p> 
+
+				<p class="text-secondary mb-0">
+				  <%= @match.likes %>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>

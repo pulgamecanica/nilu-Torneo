@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="d-flex justify-content-between mb-4">
+    <span>Categories</span>
+      <%= link_to 'New Category', new_category_path, class: 'btn btn-primary'%>
+  </h2>
+  <% @categories.each do |category| %>
+    <%= link_to category_path(category), class: "text-decoration-none" do %>
+      <div class="card mb-2">
+        <h5 class="card-header text-primary">
+          <%= category.title %> (<%= category.min_rank %>-<%= category.max_rank %>)
+        </h5>
+        <div class="card-body text-secondary">
+          <span class="card-title text-secondary h5">
+            <span>
+            <%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger float-right ml-1" %>
+            <%= link_to 'Edit', edit_category_path(category), class: "btn btn-primary float-right mr-1" %>
+            </span>
+            <%= category.description %>
+            <h6 class="text-secondary mb-0">
+              Start: <%= category.start_date %>
+            </h6>
+            <h6>
+              Registration: <%= category.register_link %>
+            </h6>
+          </span>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

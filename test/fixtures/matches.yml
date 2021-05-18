@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  date: 2021-05-17 21:19:20
+  category: one
+  player_1: one
+  player_2: one
+  winner: one
+  likes: 1
+
+two:
+  date: 2021-05-17 21:19:20
+  category: two
+  player_1: two
+  player_2: two
+  winner: two
+  likes: 1

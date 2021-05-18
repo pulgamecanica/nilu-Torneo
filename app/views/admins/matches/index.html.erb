@@ -1,0 +1,30 @@
+<div class="container">
+  <h2 class="d-flex justify-content-between mb-4">
+    <span>Matches</span>
+    <%= link_to 'New Match', new_match_path, class: 'btn btn-primary'%>
+  </h2>
+  <% @matches.each do |game_match| %>
+    <%= link_to edit_match_path(game_match), class: "text-decoration-none" do %>
+      <div class="card mb-2">
+        <h6 class="card-header">
+          Round <%= game_match.round %> - <%=game_match.category.title %> 
+          <span class="float-right text-dark"> 
+            <%= game_match.date %> 
+          </span> 
+        </h6>
+        <div class="card-body">
+          <span class="card-title text-secondary h5">
+            <%= game_match.player_1.name %> (<%= game_match.player_1.rank %>)
+            vs
+            <%= game_match.player_2.name %> (<%= game_match.player_2.rank %>)
+            <%= link_to 'Destroy', game_match, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger float-right ml-1" %>
+            <%= link_to 'Edit', edit_match_path(game_match), class: "btn btn-primary float-right mr-1" %>
+          </span>
+          <p class="text-secondary mb-0">
+            <%= game_match.likes %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

@@ -1,0 +1,22 @@
+<nav id="sidebar">
+    <div class="sidebar-header text-center">
+        <h2><%= Admin %></h2>
+        <p>TornNilu</p>
+    </div>
+    <div class="list-unstyled list-group">
+        <a href="#homeSubmenu" class="btn btn-light list-group-item m-1" data-toggle="collapse">Categories</a>
+        <div class="collapse list-unstyled list-group" id="homeSubmenu">
+            <a href="<%= categories_path %>" class="btn btn-light list-group-item m-2">Show All</a>
+            <% @categories.each do |category|%> 
+                <a href="<%= category_path(category) %>" class="btn btn-light list-group-item m-2"><%= category.title %></a>
+            <% end %>
+        </div>
+        <a href="<%= players_path %>" class="btn btn-light list-group-item m-1">Players</a>
+        <a href="<%= matches_path %>" class="btn btn-light list-group-item m-1">Matches</a>
+    </div>
+    <div class="settings text-center">
+        <h4 style="color:black;"><%=@current_admin.email%></h4>
+        <%= link_to "Sign Out", destroy_admin_session_path, method: :delete, class: "btn btn-danger"%>
+        <a href=" <%= edit_admin_registration_path %>" class="btn btn-info"><i class="fas fa-cogs"></i></a>
+    </div>
+</nav>

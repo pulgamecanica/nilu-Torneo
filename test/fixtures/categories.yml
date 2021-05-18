@@ -1,0 +1,21 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  title: MyString
+  description: MyText
+  active: false
+  min_rank: 1
+  max_rank: 1
+  register_link: MyText
+  start_date: 2021-05-17 20:42:30
+  end_date: 2021-05-17 20:42:30
+
+two:
+  title: MyString
+  description: MyText
+  active: false
+  min_rank: 1
+  max_rank: 1
+  register_link: MyText
+  start_date: 2021-05-17 20:42:30
+  end_date: 2021-05-17 20:42:30

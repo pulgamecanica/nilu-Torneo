@@ -1,0 +1,20 @@
+<div class="container">
+  <h2 class="d-flex justify-content-between mb-4">
+    <span>Players</span>
+    <%= link_to 'New Player', new_player_path, class: 'btn btn-primary'%>
+  </h2>
+
+  <% @players.each do |player| %>
+    <%= link_to edit_player_path(player), class: "text-decoration-none" do %>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title mb-1 text-dark"><%= player.name %> (<%= player.rank %>)</h5>
+          <p class="text-secondary mb-0">
+            Category: <%= player.category.title %>
+            <%= player.likes %>
+          </p>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>
