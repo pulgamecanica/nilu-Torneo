@@ -3,18 +3,35 @@
     <span>Players</span>
     <%= link_to 'New Player', new_player_path, class: 'btn btn-primary'%>
   </h2>
-
-  <% @players.each do |player| %>
-    <%= link_to edit_player_path(player), class: "text-decoration-none" do %>
-      <div class="card mb-3">
-        <div class="card-body">
-          <h5 class="card-title mb-1 text-dark"><%= player.name %> (<%= player.rank %>)</h5>
-          <p class="text-secondary mb-0">
-            Category: <%= player.category.title %>
-            <%= player.likes %>
-          </p>
+  <a href="#collapseExample" class="btn btn-secondary m-1" data-toggle="collapse">
+    <i class="fas fa-filter"></i> Filters
+  </a>
+  <div class="collapse mb-1 mt-1" id="collapseExample">
+    <div class="p-2">
+      <%= form_tag(search_players_path, method: "get", remote: true) do %>
+        <div class="row">
+          <div class="input-group">
+            <div class="col-md-8 player_search_filter_col">
+              <%= text_field_tag :search, '', class: 'form-control', placeholder: 'Search Player...', onkeydown:'clickSubmitPlayers();' %>
+            </div>
+            <div class="col-md-4 player_search_filter_col">
+              <div class="input-group mb-3">
+                <span class="input-group-text" id="basic-addon1">Category</span>
+                  <%= select_tag :filter, options_for_select(Category.order(:title).reverse_order.map { |cat| [cat.title, cat.id] }), include_blank: true, class: "custom-select", onchange:'clickSubmitPlayers();'%>
+              </div>
+              <%= submit_tag "Search", class: "d-none", id: "search_submit" %>
+            </div>
+          </div>
         </div>
-      </div>
-    <% end %>
-  <% end %>
+      <% end %>
+    </div>
+  </div>
+  <div id="players-container">
+    <%= render 'players' %>
+  </div>
 </div>
+<script>
+  function clickSubmitPlayers() {
+    $(search_submit).trigger("click");
+  }
+</script>

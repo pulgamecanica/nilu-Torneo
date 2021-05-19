@@ -1,0 +1,20 @@
+<% @players.each do |player| %>
+  <%= link_to edit_player_path(player), class: "text-decoration-none" do %>
+    <div class="card mb-1 player-card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-auto">
+            <% if player.profile_image.present? %>
+              <div class="header-image" style="background-image: url(<%= url_for(player.profile_image) %>);"></div>
+            <% end %>
+          </div>
+          <div class="col-md-10">
+            <h5 class="card-title mb-1 text-dark"><%= player.name %> (<%= player.rank %>)</h5>
+            <p class="text-secondary mb-0">Category: <%= player.category.title %></p>  
+          </div>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>
+

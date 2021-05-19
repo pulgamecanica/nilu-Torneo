@@ -25,17 +25,27 @@
     <%= form.label :rank %>
     <%= form.number_field :rank, class: "form-control" %>
   </div>
+  
+  <% if not player.persisted? %>
+    <div class="field">
+      <%= form.label :category_id %>
+      <%= form.collection_select :category_id, Category.all, :id, :title, class: "form-controll m-3" %>
+    </div>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :category_id %>
-    <%= form.select(:category_id, options_for_select(@select_categories, player.category_id), {}, {class: "form-controll m-3"}) %> 
-  </div>
-
-  <div class="field">
-    <%= form.label :birthday %>
+  <div class="field mt-3 mb-3">
+    <%= form.label :birthday%>
     <%= form.date_select :birthday, class: "form-control" %>
   </div>
-  <%= form.file_field :profile_image %>
+  <% if player.profile_image.present? %>
+    <div id="profile_image">
+      <%= image_tag player.profile_image %>
+    </div>
+    <%= form.file_field :profile_image, class: "mt-2" %>
+  <% else %>
+    <%= form.file_field :profile_image %> 
+  <% end %>
+
 
   <div class="actions">
     <%= form.submit class: "btn btn-primary btn-block mt-3" %>

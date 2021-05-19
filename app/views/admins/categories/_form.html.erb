@@ -41,6 +41,15 @@
     <%= form.check_box :active, {checked: true, class: "form-control"} %>
   </div>
   
+  <% if category.category_image.present? %>
+    <div id="category_image">
+      <%= image_tag category.category_image, class: "rounded mx-auto d-block mt-2" %>
+    </div>
+    <%= form.file_field :category_image, class: "mt-2 mx-auto d-block" %>
+  <% else %>
+    <%= form.file_field :category_image, class: "mt-2 form-control" %> 
+  <% end %>
+  
   <div class="field">
     <%= form.label :start_date %>
     <%= form.datetime_select :start_date, class: "form-control" %>

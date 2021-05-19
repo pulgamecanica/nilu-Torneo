@@ -1,7 +1,6 @@
 <h2 class="float-right mb-4">
   <%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
 </h2>
-
 <div class="row">
   <div class="col-md-3">
     <div class="card">
@@ -10,28 +9,29 @@
         <h3 class="text-secondary"><%= @category.description %></h3>
         <h5 class="text-primary"><%= @category.register_link %></h5>
         <h6 class="text-secondary"><%= @category.start_date.strftime("%B %d %Y") %> - <%= @category.end_date.strftime("%B %d %Y") %></h6>
-        <%= link_to 'Back', categories_path, class: 'btn btn-secondary btn-block mb-1' %>
+        <% if @category.category_image.present? %>
+          <div id="category_image">
+            <%= image_tag @category.category_image, class: "rounded mb-2" %>
+          </div>
+        <% end %>
         <%= link_to 'Edit', edit_category_path(@category), class: 'btn btn-secondary btn-block mb-1'%> 
+        <%= link_to 'Back', categories_path, class: 'btn btn-secondary btn-block mb-1' %>
       </div>
     </div>
   </div>
   <div class="col-md-4 mt-4">
     <div class="card">
       <div class="card-body text-center">
-        <h4 class="card-title">Players(<%= @category.title %>)</h4>
-        <% @category.players.order(:category_id).each do |player|%>
+        <h3 class="card-title">Players(<%= @category.title %>)</h3>
+        <% @category.players.order(:rank).each do |player|%>
           <%= link_to edit_player_path(player), class: "text-decoration-none" do%>
             <div class="card mb-1">
               <div class="card-body p-1 text-center">
                 <h5 class="card-title"><%= player.name %> (<%= player.rank %>)</h5>
-                <h6 class="card-text text-secondary">
-                  <%= player.bio %>
-                  <%= player.likes %>
-                </h6>
-                <span class="">
+                <span class="text-secondary">
                   Total Matches: <%= total_matches(player) %>
                   | 
-                  Total Wins: <%= matches_won(player) %>
+                  Wins: <%= matches_won(player) %>
                 </span>
               </div>
             </div>
@@ -43,20 +43,33 @@
   <div class="col-md-4 mt-4">
     <div class="card">
       <div class="card-body text-center">
-        <h4 class="card-title">Matches(<%= @category.title %>)</h4>
-        <% @category.matches.order(:round, :category_id).each do |game_match|%>
-          <%= link_to edit_match_path(game_match), class: "text-decoration-none" do%>
-            <div class="card mb-1">
-              <div class="card-body p-1 text-center">
-                <h5 class="card-title">
-                  <%= game_match.player_1.name %>(<%= game_match.player_1.rank %>) 
-                  vs
-                  <%= game_match.player_2.name %>(<%= game_match.player_2.rank %>)
-                </h5>
-                <h6 class="card-text text-secondary">
-                </h6>
+        <h3 class="card-title">Matches(<%= @category.title %>)</h3>
+        <% @category_rounds.each do |round| %>
+          <h5>Round <%= round %></h5>
+          <% @category.matches.where(round: round).each do |game_match|%>
+            <%= link_to edit_match_path(game_match), class: "text-decoration-none" do%>
+              <div class="card mb-1">
+                <div class="card-body p-1 text-center">
+                  <h5 class="card-title text-secondary">
+                    <% if game_match.player_1.eql? game_match.winner %>
+                      <span class="text-success"><%= game_match.player_1.name %>(<%= game_match.player_1.rank %>)</span>
+                      vs
+                      <span class="text-secondary"><%= game_match.player_2.name %>(<%= game_match.player_2.rank %>)</span>
+                    <% elsif game_match.player_2.eql? game_match.winner %>
+                      <span class="text-secondary"><%= game_match.player_1.name %>(<%= game_match.player_1.rank %>)</span>
+                      vs
+                      <span class="text-success"><%= game_match.player_2.name %>(<%= game_match.player_2.rank %>)</span>
+                    <% else %>
+                      <span><%= game_match.player_1.name %>(<%= game_match.player_1.rank %>)</span>
+                      vs
+                      <span><%= game_match.player_2.name %>(<%= game_match.player_2.rank %>)</span>
+                    <% end %>
+                  </h5>
+                  <h6 class="card-text text-secondary">
+                  </h6>
+                </div>
               </div>
-            </div>
+            <% end %>
           <% end %>
         <% end %>
       </div>

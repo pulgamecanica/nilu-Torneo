@@ -1,5 +1,6 @@
 module Admins
   class CategoriesController < AdminsController
+    before_action :get_rounds
     before_action :set_category, only: [:show, :edit, :update, :destroy]
 
     # GET /categories
@@ -48,6 +49,9 @@ module Admins
     end
     
     private
+      def get_rounds
+        @category_rounds = Match.where(category_id: params[:id]).select(:round).distinct.map {|match| match.round }
+      end
       # Use callbacks to share common setup or constraints between actions.
       def set_category
         @category = Category.find(params[:id])
@@ -55,7 +59,7 @@ module Admins
 
       # Only allow a list of trusted parameters through.
       def category_params
-        params.require(:category).permit(:title, :description, :active, :min_rank, :max_rank, :register_link, :start_date, :end_date)
+        params.require(:category).permit(:title, :description, :active, :min_rank, :max_rank, :register_link, :start_date, :end_date, :category_image)
       end
   end
 end

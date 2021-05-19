@@ -5,6 +5,7 @@
 			<div class="card-body">
 				<h4 class="card-title">Editing Player</h4>
 				<%= render 'form', player: @player %>
+				<%= link_to 'Destroy Player', @player, method: :delete, data: {confirm: "Are you sure?"}, class: "btn btn-danger btn-block mt-1" %>
 			</div>
 		</div>		
 	</div>
@@ -12,7 +13,7 @@
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title text-center m-4">Matches</h4>
-				<% (@matches).each do  |player_match| %>
+				<% @matches.order(:round).each do  |player_match| %>
 					<% if player_match.persisted? %>
 						<%= link_to edit_match_path(player_match), class: "text-decoration-none" do %>
 							<h4 class="bg-light p-3 text-center"><%= player_match.player_1.name %> vs <%= player_match.player_2.name %> - Round <%= player_match.round %></h4>
@@ -32,7 +33,7 @@
 						<div class="field">
 							<h6>
 								<%= @player.name =%> vs 
-								<%= form.select(:player_2_id, options_for_select(@opponents), {}, { class: "form-controll"})%>	
+    							<%= form.collection_select :player_2_id, @player.category.players.where.not(id: @player.id), :id, :name, class: "form-controll m-3" %>
 							</h6>
 						</div>
 						<%= form.submit class: "btn btn-primary btn-block mt-3" %>
