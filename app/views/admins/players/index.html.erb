@@ -1,9 +1,9 @@
 <div class="container">
   <h2 class="d-flex justify-content-between mb-4">
-    <span>Players</span>
+    <span>Players <span class="badge badge-secondary"><%= Player.all.count %></span></span>
     <%= link_to 'New Player', new_player_path, class: 'btn btn-primary'%>
   </h2>
-  <a href="#collapseExample" class="btn btn-secondary m-1" data-toggle="collapse">
+  <a href="#collapseExample" class="btn btn-secondary m-2 mb-3" data-toggle="collapse">
     <i class="fas fa-filter"></i> Filters
   </a>
   <div class="collapse mb-1 mt-1" id="collapseExample">
@@ -11,10 +11,10 @@
       <%= form_tag(search_players_path, method: "get", remote: true) do %>
         <div class="row">
           <div class="input-group">
-            <div class="col-md-8 player_search_filter_col">
+            <div class="col-md-8">
               <%= text_field_tag :search, '', class: 'form-control', placeholder: 'Search Player...', onkeydown:'clickSubmitPlayers();' %>
             </div>
-            <div class="col-md-4 player_search_filter_col">
+            <div class="col-md-4">
               <div class="input-group mb-3">
                 <span class="input-group-text" id="basic-addon1">Category</span>
                   <%= select_tag :filter, options_for_select(Category.order(:title).reverse_order.map { |cat| [cat.title, cat.id] }), include_blank: true, class: "custom-select", onchange:'clickSubmitPlayers();'%>
@@ -30,8 +30,8 @@
     <%= render 'players' %>
   </div>
 </div>
-<script>
-  function clickSubmitPlayers() {
-    $(search_submit).trigger("click");
-  }
+<script> 
+function clickSubmitPlayers() {
+  $(search_submit).trigger("click");
+}
 </script>

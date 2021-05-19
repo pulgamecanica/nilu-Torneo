@@ -17,9 +17,13 @@
 			        Round <%= @match.round %> - <%=@match.category.title %> 
 			    </h2>
 			    <h3 class="text-secondary mb-4">
-				  <%= @match.player_1.name %> (<%= @match.player_1.rank %>)
-				  vs
-				  <%= @match.player_2.name %> (<%= @match.player_2.rank %>)
+  					<%= link_to edit_player_path(@match.player_1), class: "text-decoration-none" do %>
+				  		<%= @match.player_1.name %> (<%= @match.player_1.rank %>)
+				  	<% end %>
+				  	vs
+  					<%= link_to edit_player_path(@match.player_2), class: "text-decoration-none" do %>
+				  		<%= @match.player_2.name %> (<%= @match.player_2.rank %>)
+				  	<% end %>
 				</h3>
 				<h3 class="text-warning mb-4"> 
 					<% if @match.winner.present? %>

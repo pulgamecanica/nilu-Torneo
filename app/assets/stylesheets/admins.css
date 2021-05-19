@@ -34,12 +34,13 @@
     background-position: center;
     margin-left: 2em;
 }
-.player_search_filter_col {
-
+.round-checkbox-label {
+    cursor: pointer;
+    margin: auto;
+    padding: 0 2em;
+    border: 2px solid lightgray;
+    border-radius: 1em;
 }
-.player_search_filter_col:first-child {
-
-}
-.player_search_filter_col:last-child {
-
+.active-round-checkbox-label {
+    background-color: lightgray;
 }

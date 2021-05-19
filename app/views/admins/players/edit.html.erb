@@ -12,7 +12,7 @@
 	<div class="col-md-9">
 		<div class="card">
 			<div class="card-body">
-				<h4 class="card-title text-center m-4">Matches</h4>
+				<h4 class="card-title text-center m-4">Matches <span class="badge badge-primary"><%= @player.player_1_matches.count + @player.player_2_matches.count %></span></h4>
 				<% @matches.order(:round).each do  |player_match| %>
 					<% if player_match.persisted? %>
 						<%= link_to edit_match_path(player_match), class: "text-decoration-none" do %>
@@ -20,26 +20,16 @@
 						<% end %>
 					<% end %>
 				<% end %>
-				<div class="container col-md-4 mt-5">
-					<%= form_with model: @new_match do |form| %> 
-						<div class="field">
-							<%= form.label :date %>
-							<%= form.datetime_select :date, class: "form-controll" %>
-						</div>
-						<%= form.hidden_field :category_id %>
-						<%= form.hidden_field :player_1_id %>
-						<%= form.label :round %>
-						<%= form.number_field :round, class: "form-controll" %>
-						<div class="field">
-							<h6>
-								<%= @player.name =%> vs 
-    							<%= form.collection_select :player_2_id, @player.category.players.where.not(id: @player.id), :id, :name, class: "form-controll m-3" %>
-							</h6>
-						</div>
-						<%= form.submit class: "btn btn-primary btn-block mt-3" %>
-					<% end %>
+
+				<div class="container col-md-4 mt-5 col" id="new-match-form">
+					<button class="btn btn-primary btn-block" onclick="create_match()"><i class="fas fa-plus"></i></button>
 				</div>
 			</div>
 		</div>
 	</div>
 </div>
+<script>
+function create_match() {
+	$("#new-match-form").html("<%= j render 'new_match' %>");
+}
+</script>

@@ -3,9 +3,10 @@ Rails.application.routes.draw do
   get 'home/index'
 	root to: "home#index"
   scope module: 'admins' do
-  	get 'search_players', to: 'players#search_players'
-  	resources :matches
-  	resources :players
-  	resources :categories
+		get 'search_players', to: 'players#search_players'
+		get 'search_matches', to: 'matches#search_matches'
+		resources :matches
+		resources :players
+		resources :categories
   end
 end

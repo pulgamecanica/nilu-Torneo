@@ -7,7 +7,7 @@
         <a href="#homeSubmenu" class="btn btn-light list-group-item m-1" data-toggle="collapse"><i class="fas fa-bars"></i> Categories</a>
         <div class="collapse list-unstyled list-group" id="homeSubmenu">
             <a href="<%= categories_path %>" class="btn btn-light list-group-item m-2">Show All</a>
-            <% @categories.each do |category|%> 
+            <% @categories.order(:min_rank).each do |category|%> 
                 <a href="<%= category_path(category) %>" class="btn btn-light list-group-item m-2"><%= category.title %></a>
             <% end %>
         </div>

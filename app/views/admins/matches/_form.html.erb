@@ -18,32 +18,22 @@
 
   <div class="field">
     <%= form.label :category_id %>
-    <% if @match.category.present? %>
-      <%= form.select(:category_id, options_for_select(@select_categories, @match.category.id), {}, {class: "form-controll m-3"}) %> 
-    <% else %>
-      <%= form.select(:category_id, options_for_select(@select_categories), {}, {class: "form-controll m-3"}) %> 
-    <% end %>
+    <%= form.collection_select :category_id, Category.order(:min_rank), :id, :title, class: "form-controll m-3" %>
   </div>
 
   <div class="field">
     <%= form.label :player_1_id %>
-    <%= form.select(:player_1_id, options_for_select(@select_players, @match.player_1_id), {}, {class: "form-controll m-3"}) %> 
+    <%= form.collection_select :player_1_id, Player.order(:rank), :id, :name, class: "form-controll m-3" %>
   </div>
 
   <div class="field">
     <%= form.label :player_2_id %>
-    <%= form.select(:player_2_id, options_for_select(@select_players, @match.player_2_id), {}, {class: "form-controll m-3"}) %> 
+    <%= form.collection_select :player_2_id, Player.order(:rank), :id, :name, class: "form-controll m-3" %>
   </div>
 
   <div class="field">
     <%= form.label :winner_id %>(Optional)
-      <% if @match.winner.present? %>
-        <%= form.select(:winner_id, options_for_select(@select_players, @match.winner_id ), {:include_blank => ' '}, {class: "form-controll m-3"}) %> 
-      <% else %>
-        <%= form.select(:winner_id, options_for_select(@select_players), {:include_blank => ''}, {class: "form-controll m-3"}) %> 
-      <% end %>
-
-
+    <%= form.collection_select :winner_id, Player.order(:rank), :id, :name, {include_blank: true }, class: "form-controll m-3" %>
   </div>
 
   <div class="field">

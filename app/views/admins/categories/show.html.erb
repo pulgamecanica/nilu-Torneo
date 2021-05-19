@@ -22,7 +22,7 @@
   <div class="col-md-4 mt-4">
     <div class="card">
       <div class="card-body text-center">
-        <h3 class="card-title">Players(<%= @category.title %>)</h3>
+        <h3 class="card-title">Players(<%= @category.title %>) <span class="badge badge-secondary"><%= Player.where(category: @category).count %></span></h3>
         <% @category.players.order(:rank).each do |player|%>
           <%= link_to edit_player_path(player), class: "text-decoration-none" do%>
             <div class="card mb-1">
@@ -43,8 +43,8 @@
   <div class="col-md-4 mt-4">
     <div class="card">
       <div class="card-body text-center">
-        <h3 class="card-title">Matches(<%= @category.title %>)</h3>
-        <% @category_rounds.each do |round| %>
+        <h3 class="card-title">Matches(<%= @category.title %>) <span class="badge badge-secondary"><%= Match.where(category: @category).count %></span></h3>
+        <% @category_rounds.sort.each do |round| %>
           <h5>Round <%= round %></h5>
           <% @category.matches.where(round: round).each do |game_match|%>
             <%= link_to edit_match_path(game_match), class: "text-decoration-none" do%>

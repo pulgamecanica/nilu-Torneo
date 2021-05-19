@@ -5,7 +5,7 @@ module Admins
 
     # GET /categories
     def index
-      @categories = Category.all
+      @categories = Category.order(:min_rank)
     end
 
     # GET /categories/1

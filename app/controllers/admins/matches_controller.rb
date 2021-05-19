@@ -1,6 +1,5 @@
 module Admins
   class MatchesController < AdminsController
-    before_action :get_categories
     before_action :set_match, only: [:edit, :update, :destroy]
 
     # GET /matches
@@ -49,25 +48,26 @@ module Admins
       redirect_to matches_url, notice: 'Match was successfully destroyed.'
     end
 
+    def search_matches
+      rounds = params[:match][:rounds_filter].reject { |r| r.empty? }
+      result = Match.all
+      if not params[:category_filter].empty?
+        result = Match.where(category_id: params[:category_filter])
+      end
+      if not rounds.empty?
+        result = result.where(round: rounds)
+      end
+      @matches = result
+    end
     private
       # Use callbacks to share common setup or constraints between actions.
-      def get_categories
-        @select_categories = []
-        @select_players = []
-        Category.all.each do |category|
-          @select_categories.push([category.title, category.id])
-        end
-        Player.all.each do |player|
-          @select_players.push([player.name, player.id])
-        end
-      end
       def set_match
         @match = Match.find(params[:id])
       end
 
       # Only allow a list of trusted parameters through.
       def match_params
-        params.require(:match).permit(:date, :category_id, :player_1_id, :player_2_id, :round, :winner_id)
+        params.require(:match).permit(:date, :category_id, :player_1_id, :player_2_id, :round, :winner_id, :player_1_civilization, :player_2_civilization)
       end
   end
 end
