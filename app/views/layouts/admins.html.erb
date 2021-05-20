@@ -19,7 +19,9 @@
   <body class="bg-light">
     <%= render "sideBar" %>
     <div class="admin-container">
-      <p class="notice"><%= notice %></p>
+      <% if not notice.nil? %>
+        <button class="btn btn-danger btn-block" disabled><p class="notice"><%= notice %></p></button>
+      <% end %>
       <p class="alert"><%= alert %></p>
       <%= yield %>
     </div>

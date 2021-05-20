@@ -1,34 +1,27 @@
-<%= form_with(model: category) do |form| %>
-  <% if category.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(category.errors.count, "error") %> prohibited this category from being saved:</h2>
-
-      <ul>
-        <% category.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: category, local: false) do |form| %>
 
   <div class="field">
     <%= form.label :title %>
     <%= form.text_field :title, class: "form-control" %>
+    <%= form.error_for :title, class: "text-danger" %>
   </div>
 
   <div class="field">
     <%= form.label :description %>
     <%= form.text_area :description, class: "form-control" %>
+    <%= form.error_for :description, class: "text-danger" %>
   </div>
 
   <div class="field">
     <%= form.label :min_rank %>
     <%= form.number_field :min_rank, class: "form-control" %>
+    <%= form.error_for :min_rank, class: "text-danger" %>
   </div>
 
   <div class="field">
     <%= form.label :max_rank %>
     <%= form.number_field :max_rank, class: "form-control" %>
+    <%= form.error_for :max_rank, class: "text-danger" %>
   </div>
 
   <div class="field">

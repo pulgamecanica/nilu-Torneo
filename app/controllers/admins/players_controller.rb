@@ -22,20 +22,19 @@
     def create
       @player = Player.new(player_params)
       if @player.save
-        redirect_to edit_player_path(@player), notice: 'Player was successfully created.'
+        redirect_to edit_player_path(@player)
       else
-        render :new
+        broadcast_errors @player, player_params
       end
     end
 
     # PATCH/PUT /players/1
     def update
       if @player.update(player_params)
-        notice = 'Match was successfully updated.'
+        redirect_to edit_player_path(@player)
       else
-        notice = @match.errors.full_messages.join(". ") << "."
+        broadcast_errors @player, player_params
       end
-        redirect_to edit_player_path(@player), notice: notice
     end
     # DELETE /players/1
     def destroy

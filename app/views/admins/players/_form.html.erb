@@ -1,35 +1,28 @@
-<%= form_with(model: player) do |form| %>
-  <% if player.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(player.errors.count, "error") %> prohibited this player from being saved:</h2>
-
-      <ul>
-        <% player.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+<%= form_with(model: player, local: false) do |form| %>
 
   <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name, class: "form-control" %>
+    <%= form.error_for :name, class: "text-danger" %>
   </div>
 
   <div class="field">
     <%= form.label :bio %>
     <%= form.text_area :bio, class: "form-control" %>
+    <%= form.error_for :bio, class: "text-danger" %>
   </div>
 
   <div class="field">
     <%= form.label :rank %>
     <%= form.number_field :rank, class: "form-control" %>
+    <%= form.error_for :rank, class: "text-danger" %>
   </div>
   
   <% if not player.persisted? %>
     <div class="field">
       <%= form.label :category_id %>
       <%= form.collection_select :category_id, Category.all, :id, :title, class: "form-controll m-3" %>
+      <%= form.error_for :category_id, class: "text-danger" %>
     </div>
   <% else %>
     <h6 class="btn btn-secondary btn-block mt-2 disabled"> Category: <%= player.category.title %> </h6>

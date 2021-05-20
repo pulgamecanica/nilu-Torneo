@@ -24,7 +24,7 @@ module Admins
     def create
       @match = Match.new(match_params)
       if @match.save
-        redirect_to edit_match_path(@match), notice: 'Match was successfully created.'
+        redirect_to edit_match_path(@match)
       else
         render :new
       end
@@ -34,9 +34,9 @@ module Admins
     # PATCH/PUT /matches/1
     def update
       if @match.update(match_params)
-        notice = 'Match was successfully updated.'
+        notice = nil
       else
-        notice = @match.errors.full_messages.join(". ") << "."
+        notice = @match.errors.full_messages.join(" - ")
       end
         redirect_to edit_match_path(@match), notice: notice
     end

@@ -9,7 +9,7 @@
         <% end %>
         <h6 class="text-secondary"><%= @category.start_date.strftime("%B %d %Y") %> - <%= @category.end_date.strftime("%B %d %Y") %></h6>
         <% if @category.category_image.present? %>
-          <div id="category_image">
+          <div class="text-center" id="category_image">
             <%= image_tag @category.category_image, class: "rounded mb-2" %>
           </div>
         <% end %>

@@ -25,20 +25,19 @@ module Admins
     # POST /categories
     def create
       @category = Category.new(category_params)
-
       if @category.save
-        redirect_to @category, notice: 'Category was successfully created.'
+        redirect_to @category
       else
-        render :new
+        broadcast_errors @category, category_params 
       end
     end
 
     # PATCH/PUT /categories/1
     def update
       if @category.update(category_params)
-        redirect_to @category, notice: 'Category was successfully updated.'
+        redirect_to @category
       else
-        render :edit
+        broadcast_errors @category, category_params 
       end
     end
 
