@@ -5,5 +5,4 @@ class Player < ApplicationRecord
 	has_many :winner_matches, class_name: "Match", foreign_key: 'winner_id'
 	has_one_attached :profile_image
   validates_presence_of :name, :rank
-  validates_length_of :bio, within: 10..250
 end
