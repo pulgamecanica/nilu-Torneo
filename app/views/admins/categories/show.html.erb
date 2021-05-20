@@ -8,7 +8,7 @@
         <h2 class="card-title text-primary "><%= @category.title %> (<%= @category.min_rank %>-<%= @category.max_rank %>)</h2>
         <h3 class="text-secondary"><%= @category.description %></h3>
         <% if @category.register_link.present? %>
-          <h5 class="text-primary"><a href="<%= @category.register_link %>" target="_blank">Registration Link</h5>
+          <h5 class="text-primary"><a href="<%= @category.register_link %>" target="_blank">Registration Link</a></h5>
         <% end %>
         <h6 class="text-secondary"><%= @category.start_date.strftime("%B %d %Y") %> - <%= @category.end_date.strftime("%B %d %Y") %></h6>
         <% if @category.category_image.present? %>
