@@ -20,3 +20,14 @@
         <a href=" <%= edit_admin_registration_path %>" class="btn btn-info"><i class="fas fa-cogs"></i></a>
     </div>
 </nav>
+<nav id="mobile-sidebar">
+    <a href="#homeSubmenu2" class="btn btn-light list-group-item m-1" data-toggle="collapse"><i class="fas fa-bars"></i> Categories</a>
+    <div class="collapse list-unstyled list-group" id="homeSubmenu2">
+        <a href="<%= categories_path %>" class="btn btn-light list-group-item m-2">Show All</a>
+        <% @categories.order(:min_rank).each do |category|%> 
+            <a href="<%= category_path(category) %>" class="btn btn-light list-group-item m-2"><%= category.title %></a>
+        <% end %>
+    </div>
+    <a href="<%= players_path %>" class="btn btn-light list-group-item m-1"><i class="fas fa-users"></i> Players</a>
+    <a href="<%= matches_path %>" class="btn btn-light list-group-item m-1"><i class="fas fa-shield-alt"></i> Matches</a>
+</nav>

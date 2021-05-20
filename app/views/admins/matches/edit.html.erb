@@ -1,6 +1,6 @@
 <%= link_to 'Back', matches_path, class: 'btn btn-secondary mb-3' %>
 <div class="row">
-	<div class="col-md-3">
+	<div class="col-md-3 mb-3">
 		<div class="card">
 			<div class="card-body">
 				<h4 class="card-title">Editing Match</h4>
@@ -16,7 +16,7 @@
 				<h2 class="card-title m-4">
 			        Round <%= @match.round %> - <%=@match.category.title %> 
 			    </h2>
-			    <h3 class="text-secondary mb-4">
+			    <h3 class="text-secondary mb-2">
   					<%= link_to edit_player_path(@match.player_1), class: "text-decoration-none" do %>
 				  		<%= @match.player_1.name %> (<%= @match.player_1.rank %>)
 				  	<% end %>
@@ -25,6 +25,13 @@
 				  		<%= @match.player_2.name %> (<%= @match.player_2.rank %>)
 				  	<% end %>
 				</h3>
+				<% if not @match.player_1_civilization.nil? || @match.player_2_civilization.nil?%>
+					<h5 class="text-secondary mb-4">
+				  		<%= @match.player_1_civilization.empty? ? "---" : @match.player_1_civilization %>
+				  		vs 
+				  		<%= @match.player_2_civilization.empty? ? "---" : @match.player_2_civilization %>
+					</h5>
+				<% end %>
 				<h3 class="text-warning mb-4"> 
 					<% if @match.winner.present? %>
 			        	Winner: <%= @match.winner.name %> 

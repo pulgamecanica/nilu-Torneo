@@ -1,7 +1,6 @@
 module Admins
   class MatchesController < AdminsController
     before_action :set_match, only: [:edit, :update, :destroy]
-
     # GET /matches
     def index
       @matches = Match.order(:round, :category_id)

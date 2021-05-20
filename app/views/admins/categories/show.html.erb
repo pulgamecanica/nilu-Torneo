@@ -1,8 +1,5 @@
-<h2 class="float-right mb-4">
-  <%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger" %>
-</h2>
 <div class="row">
-  <div class="col-md-3">
+  <div class="col-md-3 mb-3">
     <div class="card">
       <div class="card-body">
         <h2 class="card-title text-primary "><%= @category.title %> (<%= @category.min_rank %>-<%= @category.max_rank %>)</h2>
@@ -18,10 +15,11 @@
         <% end %>
         <%= link_to 'Edit', edit_category_path(@category), class: 'btn btn-secondary btn-block mb-1'%> 
         <%= link_to 'Back', categories_path, class: 'btn btn-secondary btn-block mb-1' %>
+        <%= link_to 'Destroy', @category, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger btn-block" %>
       </div>
     </div>
   </div>
-  <div class="col-md-4 mt-4">
+  <div class="col-md-4 mb-4">
     <div class="card">
       <div class="card-body text-center">
         <h3 class="card-title">Players(<%= @category.title %>) <span class="badge badge-secondary"><%= Player.where(category: @category).count %></span></h3>
@@ -42,7 +40,7 @@
       </div>
     </div>
   </div>
-  <div class="col-md-4 mt-4">
+  <div class="col-md-4 mb-4">
     <div class="card">
       <div class="card-body text-center">
         <h3 class="card-title">Matches(<%= @category.title %>) <span class="badge badge-secondary"><%= Match.where(category: @category).count %></span></h3>

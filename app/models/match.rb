@@ -3,10 +3,8 @@ class Match < ApplicationRecord
   belongs_to :player_1, class_name: "Player", foreign_key: :player_1_id
   belongs_to :player_2, class_name: "Player", foreign_key: :player_2_id
   belongs_to :winner, class_name: "Player", foreign_key: :winner_id, optional: true
-  validates :round, presence: true
+  validates_presence_of :round
   validate :valid_match_users, :valid_winner
-  @@civilizations = ['Chinese', 'Persians', 'Aztecs', 'Mayans', 'Malians', 'Huns', 'Khmer', 'Britons', 'Incas', 'Franks', 'Slavs', 'Mongols', 'Celts', 'Lithuanians', 'Japanese', 'Spanish', 'Magyars', 'Berbers', 'Cumans', 'Byzantines', 'The Ethiopians', 'Bulgarians', 'Vikings', 'Saracens', 'Teutons', 'Indians', 'Burmese', 'Koreans', 'Portuguese', 'Tatars', 'Italians', 'Malay', 'Vietnamese', 'Turks', 'Goths'].freeze
-  attr_reader :civilizations
   private
     def valid_match_users
     	errors.add(:player_2, "must be different!") if player_2.eql? player_1

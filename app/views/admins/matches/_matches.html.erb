@@ -3,9 +3,9 @@
     <div class="card mb-2">
       <h6 class="card-header">
         Round <%= game_match.round %> - <%=game_match.category.title %> 
-        <span class="float-right text-dark"> 
-          <%= game_match.date %> 
-        </span> 
+        <p class="float-right text-dark"> 
+          <%= game_match.date.strftime("%m/%d/%Y")%> 
+        </p> 
       </h6>
       <div class="card-body">
         <span class="card-title text-secondary h5">
