@@ -31,12 +31,15 @@
       <%= form.label :category_id %>
       <%= form.collection_select :category_id, Category.all, :id, :title, class: "form-controll m-3" %>
     </div>
+  <% else %>
+    <h6 class="btn btn-secondary btn-block mt-2 disabled"> Category: <%= player.category.title %> </h6>
   <% end %>
 
   <div class="field mt-3 mb-3">
     <%= form.label :birthday%>
-    <%= form.date_select :birthday, class: "form-control" %>
+    <%= form.date_select :birthday%>
   </div>
+  
   <% if player.profile_image.present? %>
     <div id="profile_image">
       <%= image_tag player.profile_image %>
