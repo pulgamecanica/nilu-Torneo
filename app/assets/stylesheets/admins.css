@@ -11,6 +11,7 @@
     background: #7386D5;
     color: #fff;
     transition: all 0.3s;
+    overflow: scroll;
 }
 .admin-container {
     margin-left: 250px;
