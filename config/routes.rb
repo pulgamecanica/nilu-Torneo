@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 	get '/category/:id' => 'visitors/categories#show', as: :visitor_category
 	get 'visitor_search_players', to: 'visitors/categories#visitor_search_players'
 	get 'visitor_search_matches', to: 'visitors/categories#visitor_search_matches'
+	get 'visitor_get_random_background', to: 'visitors/categories#visitor_get_random_background'
   scope module: 'admins' do 
 		get 'search_players', to: 'players#search_players'
 		get 'search_matches', to: 'matches#search_matches'
