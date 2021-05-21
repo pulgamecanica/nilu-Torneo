@@ -5,10 +5,42 @@ html {
 		.visitors-container {
 			height: 100%;
 			.big-container {
-				height: 100% !important;
+				min-height: 100% !important;
 				background-position: center;
-				background-repeat: no-repeat;
+				background-repeat: repeat-y;
 				background-size: cover;
+				.header-image {
+				    width: 60px;
+				    height: 60px;
+				    background-size: cover;
+				    background-position: center;
+				    border-radius: 50%;
+				    border: 2px solid lightgray;
+				    margin: auto;
+				}
+				#change_background_button {
+					float: right;
+				}
+				.visitor-container {
+					opacity: 0.9;
+					#players-container{
+						.player-field:hover {
+							background-color: lightgray;
+						}
+					}
+					.match-players-card {
+						border: none;
+					}
+					.match-players-card:hover {
+						background-color: lightgray;
+					}
+					hr {
+						margin: 0;
+					}
+				}
+				.visitor-container:hover{
+					opacity: 1;
+				}
 				.categories-container{
 					position: fixed;
 					top: 50%;
@@ -26,23 +58,22 @@ html {
 						transform: scale(1.1);
 					}
 				}
-				.footer {
+				#footer {
 					position: fixed;
-					bottom: 4em;
+					bottom: 0.5em;
 					left: 45%;
-					.twitch-button {
-						background-color: #fff;
-						color: #6441a5;
+					transition: bottom 0.5s;
+					.footer-up{
+						margin-bottom: 0.5em;
+						.twitch-button {
+							background-color: #fff;
+							color: #6441a5;
+						}
+						.discord-button {
+							background-color: #7289DA;
+							color: #fff;
+						}
 					}
-					.discord-button {
-						background-color: #7289DA;
-						color: #fff;
-					}
-				}
-				.git-dev {
-					position: fixed;
-					bottom: 1em;
-					left: 45%;
 				}
 			}
 		}

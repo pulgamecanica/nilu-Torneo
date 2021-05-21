@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="d-flex justify-content-between mb-4">
-    <span>Matches <span class="badge badge-secondary"><%= Match.all.count %></span></span>
+    <span>Matches <span class="badge badge-secondary" id="matches-badge"><%= Match.all.count %></span></span>
     <%= link_to 'New Match', new_match_path, class: 'btn btn-primary'%>
   </h2>
   <a href="#collapseExample" class="btn btn-secondary m-2 mb-3" data-toggle="collapse">

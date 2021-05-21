@@ -1,6 +1,6 @@
 <div class="container">
   <h2 class="d-flex justify-content-between mb-4">
-    <span>Players <span class="badge badge-secondary"><%= Player.all.count %></span></span>
+    <span> Players <span class="badge badge-secondary" id="players-badge"> <%= @players.all.count %> </span> </span>
     <%= link_to 'New Player', new_player_path, class: 'btn btn-primary'%>
   </h2>
   <a href="#collapseExample" class="btn btn-secondary m-2 mb-3" data-toggle="collapse">
@@ -16,7 +16,7 @@
             </div>
             <div class="col-md-4">
               <div class="input-group mb-3">
-                <span class="input-group-text" id="basic-addon1">Category</span>
+                <span class="input-group-text" id="basic-addon1"> Category </span>
                   <%= select_tag :filter, options_for_select(Category.order(:title).reverse_order.map { |cat| [cat.title, cat.id] }), include_blank: true, class: "custom-select", onchange:'clickSubmitPlayers();'%>
               </div>
               <%= submit_tag "Search", class: "d-none", id: "search_submit" %>

@@ -1,0 +1,114 @@
+<div class="jumbotron p-3 mb-0">
+	<%= link_to "Atras", root_path, class: "btn btn-secondary col-2 float-left position-absolute" %>
+	<% if @category.category_image.present? %>
+		<div id="category_image">
+			<%= image_tag @category.category_image, class: "rounded mx-auto d-block", style: "width:auto;height:175px" %>
+		</div>
+	<% end %>
+  <p class="display-4 text-center m-0"> <%= @category.title %> <span style="font-size: 50%;">(<%= @category.min_rank %>-<%= @category.max_rank %>)</span> </p>
+  <p class="text-center lead m-0"> <%= @category.description %> </p>
+  <p class="text-center m-0"> <%= @category.start_date.strftime("%d/%m") %> - <%= @category.end_date.strftime("%d/%m") %> </p>
+  <p class="text-center mb-0">
+    <a class="btn btn-success col-md-2 btn-lg" href="<%= @category.register_link %>" role="button">Registrarse</a>
+  </p>
+</div>
+<% if Background.get_random_background.present? %>
+	<div class="big-container" id="background_image_container" style="background-image: url(<%= url_for(Background.get_random_background.first.background_image) %>)">
+	<span id="change_background_button">
+		<a class="btn btn-success m-2"><i class="fas fa-images"></i></a>
+	</span>
+<% else %>
+	<div class="big-container bg-info" id="background_image_container">
+<% end %>
+	<div class="row p-3">
+		<div class="col-md-4 mb-3 visitor-container">
+			<div class="card text-center">
+			  <h4 class="card-header">
+			    Jugadores <span class="badge badge-secondary" id="players-badge"> <%= @players.all.count %> </span>
+			  </h4>
+			  <div class="card-body">
+					<%= form_tag(visitor_search_players_path, method: "get", remote: true) do %>
+						<div class="input-group">
+							<span class="input-group-text" id="basic-addon1"><i class="fas fa-filter"></i></span>
+						  	<%= text_field_tag :search, '', class: 'form-control', placeholder: 'Search Player...', onkeydown:'clickSubmitPlayers();' %>
+						</div>
+						<%= hidden_field_tag :category_id, @category.id %>
+						<%= submit_tag "Search", class: "d-none", id: "search_submit" %>
+					<% end %>
+					<ul class="list-group list-group-flush mt-3" id="players-container">
+    					<%= render 'players' %>
+  					</ul>
+			  </div>
+			  <div class="card-footer text-muted">
+			  	<%= @category.title %>
+			  </div>
+			</div>
+		</div>
+		<div class="col-md-8 mb-3 visitor-container">
+			<div class="card text-center">
+			  <h4 class="card-header">
+			    Partidas: <span class="badge badge-secondary" id="matches-badge"> <%= @matches.all.count %> </span>
+			  </h4>
+			  <div class="card-body">
+					<%= form_tag(visitor_search_matches_path, method: "get", remote: true) do %>
+				          <div class="input-group">
+			                <span class="input-group-text" id="basic-addon1"><i class="fas fa-filter"></i>Rounds</span>
+			                <div class="d-flex justify-content-start">
+				                <%= collection_check_boxes(:match, :rounds_filter, Match.order(:round).select(:round).distinct, :round, :round, {}, {class: "custom-control custom-checkbox", onchange:'clickSubmitMatches();'}) do |round| %>
+				                  <span class="d-none">
+				                    <%= round.check_box %>
+				                  </span>
+				                  <%= round.label(class: "round-checkbox-label mr-2 ml-2", onclick: "activateCheckbox(this)") %>
+				                <% end %>
+			            	</div>
+							<%= hidden_field_tag :category_id, @category.id %>
+				            <%= submit_tag "Search", class: "d-none", id: "search_submit_matches" %>
+				          </div>
+				    <% end %>
+
+					<ul class="list-group list-group-flush mt-3" id="matches-container">
+    					<%= render 'matches' %>
+  					</ul>
+			  </div>
+			  <div class="card-footer text-muted">
+			  	<%= @category.title %>
+			  </div>
+			</div>
+		</div>
+	</div>
+	<div id="footer">
+		<div class="footer-up">
+			<a class="btn twitch-button" href="https://www.twitch.tv/nilusa" role="button"><i class="fab fa-twitch"></i></a>
+			<a class="btn discord-button" href="https://discord.gg/kAGB9G9seF" role="button"><i class="fab fa-discord"></i></a>
+			<a class="btn btn-info" href="https://docs.google.com/document/d/1qmk3QK-E5KjPnmKYDkGHqGd-oOpbTo0TPQQ2eHtUmok/edit?usp=sharing" role="button">Reglas <i class="fas fa-book"></i></a>
+		</div>
+		<div class="footer-down">
+			<a class="btn btn-dark" href="https://github.com/pulgamecanica" role="button">By pulgamecanica <i class="fab fa-github"></i></a>
+		</div>
+	</div>
+</div>
+<script>
+var prevScrollpos = window.pageYOffset;
+window.onscroll = function() {
+var currentScrollPos = window.pageYOffset;
+  if (prevScrollpos > currentScrollPos) {
+    document.getElementById("footer").style.bottom = "0.5em";
+  } else {
+    document.getElementById("footer").style.bottom = "-100px";
+  }
+  prevScrollpos = currentScrollPos;
+}
+function clickSubmitPlayers() {
+  $(search_submit).trigger("click");
+}
+function clickSubmitMatches() {
+  $(search_submit_matches).trigger("click");
+}
+function activateCheckbox(label) {
+  if ($(label).hasClass("active-round-checkbox-label")) {
+    $(label).removeClass("active-round-checkbox-label");
+  }else{
+    $(label).addClass("active-round-checkbox-label");
+  }
+}
+</script>

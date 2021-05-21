@@ -1,8 +1,10 @@
 Rails.application.routes.draw do
   devise_for :admins
-  get 'home/index'
 	root to: "visitors/home#index"
-  scope module: 'admins' do
+	get '/category/:id' => 'visitors/categories#show', as: :visitor_category
+	get 'visitor_search_players', to: 'visitors/categories#visitor_search_players'
+	get 'visitor_search_matches', to: 'visitors/categories#visitor_search_matches'
+  scope module: 'admins' do 
 		get 'search_players', to: 'players#search_players'
 		get 'search_matches', to: 'matches#search_matches'
 		resources :matches

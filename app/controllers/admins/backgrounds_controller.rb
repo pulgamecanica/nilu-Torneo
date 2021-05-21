@@ -1,14 +1,10 @@
 module Admins
   class BackgroundsController < AdminsController
-    before_action :set_background, only: [:show, :edit, :update, :destroy]
+    before_action :set_background, only: [:edit, :update, :destroy]
 
     # GET /backgrounds
     def index
       @backgrounds = Background.all
-    end
-
-    # GET /backgrounds/1
-    def show
     end
 
     # GET /backgrounds/new

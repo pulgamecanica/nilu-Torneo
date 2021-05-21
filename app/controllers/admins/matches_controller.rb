@@ -6,11 +6,7 @@ module Admins
       @matches = Match.order(:round, :category_id)
 
     end
-
-    # GET /matches/1
-    def show
-    end
-
+    
     # GET /matches/new
     def new
       @match = Match.new

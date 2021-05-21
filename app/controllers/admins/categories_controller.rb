@@ -1,17 +1,13 @@
 module Admins
   class CategoriesController < AdminsController
     before_action :get_rounds
-    before_action :set_category, only: [:show, :edit, :update, :destroy]
+    before_action :set_category, only:  [:edit, :update, :destroy]
 
     # GET /categories
     def index
       @categories = Category.order(:min_rank)
     end
 
-    # GET /categories/1
-    def show
-      
-    end
 
     # GET /categories/new
     def new
