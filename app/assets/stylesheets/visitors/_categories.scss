@@ -28,8 +28,8 @@ html {
 				}
 				.footer {
 					position: fixed;
-					bottom: 1em;
-					left: 40%;
+					bottom: 4em;
+					left: 45%;
 					.twitch-button {
 						background-color: #fff;
 						color: #6441a5;
@@ -38,6 +38,11 @@ html {
 						background-color: #7289DA;
 						color: #fff;
 					}
+				}
+				.git-dev {
+					position: fixed;
+					bottom: 1em;
+					left: 45%;
 				}
 			}
 		}
