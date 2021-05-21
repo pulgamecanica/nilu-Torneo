@@ -5,6 +5,7 @@ html {
 		.visitors-container {
 			height: 100%;
 			.big-container {
+				position: relative;
 				min-height: 100% !important;
 				background-position: center;
 				background-repeat: repeat-y;
@@ -19,9 +20,12 @@ html {
 				    margin: auto;
 				}
 				#change_background_button {
-					float: right;
+					z-index: 1;
+					position: absolute;
+					right: 0;
+					top: 0;
 				}
-				.visitor-container {
+				.box-container {
 					opacity: 0.9;
 					#players-container{
 						.player-field:hover {
@@ -38,14 +42,12 @@ html {
 						margin: 0;
 					}
 				}
-				.visitor-container:hover{
+				.box-container:hover{
+					z-index: 2;
 					opacity: 1;
 				}
 				.categories-container{
-					position: fixed;
-					top: 50%;
-					left: 50%;
-					transform: translate(-50%, -50%);
+			
 				}
 				.category-card{
 					border: 0;
@@ -79,3 +81,37 @@ html {
 		}
 	}
 }
+@media (min-width: 1000px) {
+	body{
+		.big-container {
+			.categories-container{
+				position: fixed;
+				top: 50%;
+				left: 50%;
+				transform: translate(-50%, -50%);
+			}
+		}
+	}
+}
+@media (max-width: 700px) {
+	body {
+		.jumbotron {
+			#category_image {
+				margin-top: 3em;
+			}
+		}
+		.visitors-container {
+			.big-container {
+				.box-container {
+					padding: 0;
+				}
+				#footer {
+					left: 30% !important;
+				}
+			}
+		}
+	}
+
+}
+
+
