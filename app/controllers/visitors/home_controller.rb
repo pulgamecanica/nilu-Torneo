@@ -1,5 +1,5 @@
 module Visitors
-	class HomeController < VisitorsControllers
+	class HomeController < VisitorsController
 	  def index
 	  	@categories = Category.active_categories.order_by_rank
 	  end

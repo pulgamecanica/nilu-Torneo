@@ -1,3 +1,3 @@
-class VisitorsControllers < ApplicationController
+class VisitorsController < ApplicationController
 	layout 'visitors'
 end
