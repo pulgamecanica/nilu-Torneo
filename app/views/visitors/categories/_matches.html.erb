@@ -3,7 +3,7 @@
     <h5 class="card-header">Round <%= round %></h5>
     <div class="card-body m-0 p-0">
       <% @matches.where(round: round).each do |game_match| %>
-        <%= link_to edit_match_path(game_match), class: "text-decoration-none" do %>
+        <%= link_to visitor_match_path(game_match), class: "text-decoration-none" do %>
           <div class="card match-players-card">
             <div class="card-body">
               <p class="float-right text-dark"> 
