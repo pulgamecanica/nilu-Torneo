@@ -3,6 +3,6 @@ class Background < ApplicationRecord
   validates_presence_of :name, :background_image
 
   scope :get_random_background, -> do
-  	where(id: Background.pluck(:id).sample)
+  	find(Background.pluck(:id).sample)
   end
 end

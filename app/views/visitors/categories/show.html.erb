@@ -12,11 +12,14 @@
     <a class="btn btn-success col-md-2 btn-lg" href="<%= @category.register_link %>" target="_blank" role="button">Registrarse</a>
   </p>
 </div>
-<% if Background.get_random_background.present? %>
-	<div class="big-container" id="background_image_container" style="background-image: url(<%= url_for(Background.get_random_background.first.background_image) %>)">
-	<span id="change_background_button">
-		<a class="btn btn-success m-2" onclick="changeBackgroundImage()"><i class="fas fa-images"></i></a>
-	</span>
+<% if @background.present? %>
+	<div class="big-container" id="background_image_container" style="background-image: url(<%= url_for(@background.background_image) %>)">
+	<%= form_tag(visitor_get_random_background_path, method: "get", remote: true) do %>
+		<span id="change_background_button">
+			<a class="btn btn-success m-2" onclick="changeBackgroundImage()"><i class="fas fa-images"></i></a>
+			<%= submit_tag "Search", class: "d-none", id: "backgroud_submit" %>
+		</span>
+	<% end %>
 <% else %>
 	<div class="big-container bg-info" id="background_image_container">
 <% end %>
@@ -109,7 +112,7 @@ function activateCheckbox(label) {
     $(label).addClass("active-round-checkbox-label");
   }
 }
-function changeBackgroundImage() {
-	$("#background_image_container").css("background-image", "url(" + '<%= url_for(Background.get_random_background.first.background_image) %>' + "})");
+function changeBackgroundImage(){
+	$(backgroud_submit).trigger("click");
 }
 </script>

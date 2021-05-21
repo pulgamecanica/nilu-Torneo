@@ -1,6 +1,7 @@
 module Visitors
 	class CategoriesController < VisitorsController
-
+    before_action :visitor_get_random_background
+		
 		def show
 			@category = Category.find(params[:id])
 			@players = Player.where(category_id: params[:id]).order(:rank)
@@ -20,6 +21,10 @@ module Visitors
       p "*+*" * 30
       p @matches.map { |e| e.round  }
       p "*+*" * 30
+		end
+
+		def visitor_get_random_background
+			@background = Background.get_random_background
 		end
 
 	end 

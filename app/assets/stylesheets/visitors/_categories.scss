@@ -46,9 +46,6 @@ html {
 					z-index: 2;
 					opacity: 1;
 				}
-				.categories-container{
-			
-				}
 				.category-card{
 					border: 0;
 					height: 500px;
@@ -102,6 +99,9 @@ html {
 		}
 		.visitors-container {
 			.big-container {
+				.category-column:last-child {
+					margin-bottom: 8em;
+				}
 				.box-container {
 					padding: 0;
 				}

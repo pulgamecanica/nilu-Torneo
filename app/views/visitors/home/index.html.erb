@@ -6,17 +6,20 @@
   </p>
 </div>
 <% if Background.get_random_background.present? %>
-	<div class="big-container" id="background_image_container" style="background-image: url(<%= url_for(Background.get_random_background.first.background_image) %>)">
-	<span id="change_background_button">
-		<a class="btn btn-success m-2" onclick="changeBackgroundImage()"><i class="fas fa-images"></i></a>
-	</span>
+	<div class="big-container" id="background_image_container" style="background-image: url(<%= url_for(Background.get_random_background.background_image) %>)">
+	<%= form_tag(visitor_get_random_background_path, method: "get", remote: true) do %>
+		<span id="change_background_button">
+			<a class="btn btn-success m-2" onclick="changeBackgroundImage()"><i class="fas fa-images"></i></a>
+			<%= submit_tag "Search", class: "d-none", id: "backgroud_submit" %>
+		</span>
+	<% end %>
 <% else %>
 	<div class="big-container bg-info" id="background_image_container">
 <% end %>
 	<div class="container categories-container">
 		<div class="row m-0">
 	  	<% @categories.each do |category| %>
-	  		<div class="col-md-6 col-lg-4 mt-5">
+	  		<div class="col-md-6 col-lg-4 mt-5 category-column">
 				<div class="card category-card">
 				  <img class="card-img-top category-image" src="<%= category.category_image.present? ? url_for(category.category_image) : asset_path('aoe_logo_1.png') %>" alt="Category-image Imagen-Categoria">
 				  <div class="card-body d-flex flex-column">
@@ -41,7 +44,7 @@
 	</div>
 </div>
 <script>
-function changeBackgroundImage() {
-	$("#background_image_container").css("background-image", "url(" + '<%= url_for(Background.get_random_background.first.background_image) %>' + "})");
+function changeBackgroundImage(){
+	$(backgroud_submit).trigger("click");
 }
 </script>
