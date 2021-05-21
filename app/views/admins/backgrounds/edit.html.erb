@@ -1,0 +1,7 @@
+<h1>
+	Editing Background <%= link_to 'Back', backgrounds_path, class: "btn btn-secondary col-md-2 float-right" %>
+</h1>
+<%= render 'form', background: @background %>
+<%= link_to 'Destroy', @background, method: :delete, data: { confirm: 'Are you sure?' },class: "btn btn-danger btn-block mt-2" %>
+
+ 

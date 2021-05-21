@@ -1,0 +1,27 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <h2 class="d-flex justify-content-between mb-4">
+    <span>Backgrounds <span class="badge badge-secondary"><%= @backgrounds.count %></span></span>
+    <%= link_to 'New Background', new_background_path, class: 'btn btn-primary' %>
+  </h2>
+
+  <% @backgrounds.each do |background| %>
+    <%= link_to edit_background_path(background), class: "text-decoration-none" do %>
+      <div class="card mb-1 background-card">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-md-6">
+              <% if background.background_image.present? %>
+                <div class="header-image" style="background-image: url(<%= url_for(background.background_image) %>);"></div>
+              <% end %>
+            </div>
+            <div class="col-md-6">
+              <h5 class="card-title mb-1 text-dark"><%= background.name %></h5>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

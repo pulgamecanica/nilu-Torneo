@@ -5,7 +5,11 @@
     <a class="btn btn-info col-md-2 btn-lg" href="#" role="button">Saber más</a>
   </p>
 </div>
-<div class="big-container" id="background_image_container" style="background-image: url(<%= asset_path("background_" + rand(1..6).to_s) %>)">
+<% if Background.get_random_background.present? %>
+	<div class="big-container" id="background_image_container" style="background-image: url(<%= url_for(Background.get_random_background.first.background_image) %>)">
+<% else %>
+	<div class="big-container bg-info" id="background_image_container">
+<% end %>
 	<div class="container categories-container">
 		<div class="row m-0">
 	  	<% @categories.each do |category| %>

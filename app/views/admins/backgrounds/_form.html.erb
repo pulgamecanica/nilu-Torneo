@@ -1,0 +1,31 @@
+<%= form_with(model: background) do |form| %>
+  <% if background.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(background.errors.count, "error") %> prohibited this background from being saved:</h2>
+
+      <ul>
+        <% background.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: "form-control" %>
+  </div>
+
+  <% if background.background_image.present? %>
+    <div id="category_image">
+      <%= image_tag background.background_image, class: "rounded mx-auto d-block mt-2" %>
+    </div>
+    <%= form.file_field :background_image, class: "mt-2 mx-auto d-block" %>
+  <% else %>
+    <%= form.file_field :background_image, class: "mt-2 form-control" %> 
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit class: "btn btn-primary btn-block mt-2" %>
+  </div>
+<% end %>
