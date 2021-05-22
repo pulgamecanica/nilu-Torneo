@@ -4,12 +4,44 @@ html {
 		height: 100%;
 		.visitors-container {
 			height: 100%;
+			.jumbotron {
+				background-color: rgb(208,179,146);
+				border: 8px solid transparent;
+				border-image: image_url("small-box-profile-aoe2de.png") 8 round;
+				a {
+					position: fixed;
+					text-decoration: none;
+					color: rgb(234, 190, 170);
+					font-size: 120%;
+					background-image: image_url(asset_path('button-profile-aoe2de.png'));
+					background-repeat: no-repeat;
+					background-position: center;
+					padding: 18px 125px;
+				}
+				a:hover {
+					transform: scale(1.1);
+				}
+				.register-button {
+					top: 80px;
+					left: -3px;
+				}
+				.more-info {
+					top: 0;
+					right: 0;
+				}
+			}
 			.big-container {
 				position: relative;
 				min-height: 100% !important;
 				background-position: center;
 				background-repeat: repeat-y;
 				background-size: cover;
+				#change_background_button {
+					z-index: 1;
+					position: absolute;
+					right: 0;
+					top: 0;
+				}
 				.header-image {
 				    width: 60px;
 				    height: 60px;
@@ -18,12 +50,6 @@ html {
 				    border-radius: 50%;
 				    border: 2px solid lightgray;
 				    margin: auto;
-				}
-				#change_background_button {
-					z-index: 1;
-					position: absolute;
-					right: 0;
-					top: 0;
 				}
 				.box-container {
 					opacity: 0.9;
@@ -49,29 +75,42 @@ html {
 				.category-card{
 					border: 0;
 					height: 500px;
-					background-color: rgba(250,250,250,0.85);
+					background-color: rgba(208, 179, 146, 0.85);
+					border: 8px solid transparent;
+					border-image: image_url("small-box-profile-aoe2de.png") 8 round;
 					.category-image {
 						height: 300px;
 						width: auto;
 					}&:hover {
 						transform: scale(1.1);
 					}
+					a {
+						position: absolute;
+						font-size: 120%;
+						color: rgb(234, 190, 170);
+						background-image: image_url(asset_path('button-profile-aoe2de.png'));
+						background-repeat: no-repeat;
+						background-position: center;
+						padding: 18px 125px;
+						bottom: 0;
+						left: 4%;
+					}
 				}
-				#footer {
-					position: fixed;
-					bottom: 0.5em;
-					left: 45%;
-					transition: bottom 0.5s;
-					.footer-up{
-						margin-bottom: 0.5em;
-						.twitch-button {
-							background-color: #fff;
-							color: #6441a5;
-						}
-						.discord-button {
-							background-color: #7289DA;
-							color: #fff;
-						}
+			}
+			#footer {
+				position: fixed;
+				bottom: 0.5em;
+				left: 45%;
+				transition: bottom 0.5s;
+				.footer-up{
+					margin-bottom: 0.5em;
+					.twitch-button {
+						background-color: #fff;
+						color: #6441a5;
+					}
+					.discord-button {
+						background-color: #7289DA;
+						color: #fff;
 					}
 				}
 			}
@@ -96,9 +135,32 @@ html {
 			#category_image {
 				margin-top: 3em;
 			}
+			.main-title {
+				margin-top: 0.5em;
+			}
+			#category_image {
+				margin-top: 6em;
+			}
+			.more-info {
+				position: absolute !important;
+				top: 0;
+				left: 0%;
+			}
+			.register-button {
+				top: 3.5em !important;
+			}
+			a {
+				position: absolute !important;
+			}
 		}
 		.visitors-container {
 			.big-container {
+				.category-card{
+					text-align: center;
+					a {
+						left: 20% !important;
+					}
+				}
 				.category-column:last-child {
 					margin-bottom: 8em;
 				}

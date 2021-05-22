@@ -42,12 +42,14 @@
 			.header-image {
 				position: absolute;
 				border: 8px solid transparent;
-				border-image: image_url("image-profile-aoe2de.png") 8 round;
+				border-image: image_url("image-profile-aoe2de.png") 4 round;
 			    top: 100px;
 			    right: 89px;
 			    padding: 40px;
+			    border-radius: 1.5em;
 			    background-size: cover;
 			    background-position: center;
+				background-repeat: no-repeat;			    
 			}
 		}
 		.c {
@@ -69,7 +71,7 @@
 			a {
 				position: absolute;
 				text-decoration: none;
-				color: white;
+				color: rgb(234, 190, 170);
 				font-size: 120%;
 				background-image: image_url(asset_path('button-profile-aoe2de.png'));
 				background-repeat: no-repeat;
