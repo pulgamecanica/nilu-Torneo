@@ -6,3 +6,106 @@
 	min-width: 100%;
 	min-height: 100%;
 }
+.wrapper {
+	padding-top: 120px;
+    display: grid;
+    grid-template-columns: 15% 70% 15%;
+    color: #444;
+}
+.a {
+	background-image: url(asset_path('name-profile-aoe2de.png'));
+	grid-column: 2 / 3;
+	grid-row: 1;
+	height: 86px;
+	background-repeat: no-repeat;
+	background-position: center;
+	text-align: center;
+	font-size: 250%;
+	p {
+		padding-top: 5px;
+	}
+}
+.b {
+	position: relative;
+	background-image: url(asset_path('text-profile-aoe2de.png'));
+	grid-column: 2 / 3 ;
+	grid-row: 2;
+	background-repeat: no-repeat;
+	background-position: center;
+	height: 280px;
+	width: auto;
+	margin-top: 4em;
+	p {
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		margin: 1em 2em;
+		color: black;
+		font-size: 120%;
+		text-align: left;
+		display: block;
+	}
+	.header-image {
+		position: absolute;
+		padding: 40px;
+	    background-size: cover;
+	    background-position: center;
+	    top: 100px;
+	    right: 89px;
+	}
+}
+.c {
+	grid-column: 3 / 4 ;
+	grid-row: 2;
+	position: relative;
+	padding: 2em 3em;
+	.player-category-box {
+		position: absolute;
+		background-image: url(asset_path('small-box-profile-aoe2de.png'));
+		background-repeat: no-repeat;
+		background-position: center;
+		background-size: cover;
+		height: 110%;
+		width: auto;
+		padding-top: 120px;
+		.category-image {
+
+			padding: 100px;
+		    background-size: cover;
+		    background-position: center;
+		}
+		h3 {
+			position: absolute;
+			right: 40%;
+			bottom: 0;
+		}
+	}
+}
+.d {
+	grid-column: 1 / 2 ;
+	grid-row: 4;
+	a {
+		position: absolute;
+		text-decoration: none;
+		color: white;
+		font-size: 120%;
+		background-image: url(asset_path('button-profile-aoe2de.png'));
+		background-repeat: no-repeat;
+		background-position: center;
+		padding: 18px 125px;
+		bottom: 7%;
+		left: 8%;
+	}&:hover{
+		position: absolute;
+		bottom: 7%;
+		left: 8%;
+		transform: scale(1.1);
+	}
+}
+
+
+
+
+
+
+

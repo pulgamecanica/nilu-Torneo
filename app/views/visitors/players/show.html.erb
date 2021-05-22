@@ -1,3 +1,30 @@
 <div class="visitor-player-container">
-	<h1><%= @player.name %>	</h1>
+	<div class="container wrapper">
+		<div class="box a"><p><%= @player.name %></p></div>
+			<div class="box b">
+	  			<p>Bio: <%= @player.bio %> </p>
+	  			<p>Partidas Ganadas: <%= @matches_won.count %> </p>
+	  			<p>Total de Partidas: <%= @total_matches.count %> </p>
+	  			<p>Rank: <%= @player.rank %></p>
+	  			<p>Likes: <%= @player.likes.to_i %></p>
+	  			<% if @player.profile_image.present? %>
+              		<span class="header-image" style="background-image: url(<%= url_for(@player.profile_image) %>);"></span>
+	  			<% else %>
+              		<span class="header-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></span>
+	  			<% end %>
+			</div>
+	  	<div class="box c">
+	  		<div class="player-category-box">
+	  			<% if @player.category.category_image.present? %>
+              		<span class="category-image" style="background-image: url(<%= url_for(@player.category.category_image) %>);"></span>
+	  			<% else %>
+              		<span class="category-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></span>
+	  			<% end %>
+	  			<h3> <%= @player.category.title %> </h3>
+	  		</div>
+	  	</div>
+	  	<div class="box d">
+        	<%= link_to "Return", visitor_category_path(@player.category)%>
+	  	</div>
+	</div>
 </div>

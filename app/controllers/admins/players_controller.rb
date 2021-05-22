@@ -16,6 +16,7 @@
     def edit
       @matches = Match.all.where(player_1_id: @player.id).or(Match.all.where(player_2_id: @player.id ))
       @new_match = @player.player_1_matches.build(player_1: @player, category: @player.category) 
+      @matches_won = Match.where(player_1: @player).where(winner: @player).or(Match.where(player_2: @player).where(winner: @player))
     end
 
     # POST /players
