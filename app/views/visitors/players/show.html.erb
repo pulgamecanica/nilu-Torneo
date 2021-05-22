@@ -113,19 +113,17 @@
 	</div>
 </div>
 <script>
-	var i, j;
+	var i, color1, color2;
 	var falgs1 = document.getElementsByClassName("name_flag_1");
 	var falgs2 = document.getElementsByClassName("name_flag_2");
-	var color1 = getRandomColor();
-	var color2 = getRandomColor();
-	while (color1 == color2) {
-		color2 = getRandomColor();
-	}
 	for (i = 0; i < falgs1.length; i++) {
+		color1 = getRandomColor();
+		color2 = getRandomColor();
+		while (color1 == color2) {
+			color2 = getRandomColor();
+		}
 		falgs1[i].style.backgroundColor = color1;
-	}
-	for (j = 0; j < falgs2.length; j++) {
-		falgs2[j].style.backgroundColor = color2;
+		falgs2[i].style.backgroundColor = color2;
 	}
 
 	function getRandomColor() {

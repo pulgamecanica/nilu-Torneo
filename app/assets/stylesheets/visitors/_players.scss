@@ -1,5 +1,5 @@
 .visitor-player-container {
-	background-image: url(asset_path('profile-aoe2de.png'));
+	background-image: image_url(asset_path('profile-aoe2de.png'));
 	background-size: cover;
 	background-position: top;
 	background-repeat: no-repeat;
@@ -12,7 +12,7 @@
 		.a {
 			grid-column: 2 / 3;
 			grid-row: 1;
-			background-image: url(asset_path('name-profile-aoe2de.png'));
+			background-image: image_url(asset_path('name-profile-aoe2de.png'));
 			height: 85px;
 			background-repeat: no-repeat;
 			background-position: center;
@@ -28,7 +28,7 @@
 			grid-row: 2;
 			position: relative;
 			border: 8px solid transparent;
-			border-image: url("small-box-profile-aoe2de.png") 8 round;
+			border-image: image_url("small-box-profile-aoe2de.png") 8 round;
 			background-color: rgb(179, 152, 125);
 			margin: 2em 8em;
 			padding: 1em;
@@ -42,7 +42,7 @@
 			.header-image {
 				position: absolute;
 				border: 8px solid transparent;
-				border-image: url("image-profile-aoe2de.png") 8 round;
+				border-image: image_url("image-profile-aoe2de.png") 8 round;
 			    top: 100px;
 			    right: 89px;
 			    padding: 40px;
@@ -56,7 +56,7 @@
 			padding-top: 6em;
 			.category-image {
 				border: 8px solid transparent;
-				border-image: url("small-box-profile-aoe2de.png") 8 round;
+				border-image: image_url("small-box-profile-aoe2de.png") 8 round;
 				padding: 80px;
 			    background-size: cover;
 			    background-position: center;
@@ -71,7 +71,7 @@
 				text-decoration: none;
 				color: white;
 				font-size: 120%;
-				background-image: url(asset_path('button-profile-aoe2de.png'));
+				background-image: image_url(asset_path('button-profile-aoe2de.png'));
 				background-repeat: no-repeat;
 				background-position: center;
 				padding: 18px 125px;
@@ -90,7 +90,7 @@
 			grid-row: 3;
 			background-color: rgb(208,179,146);
 			border: 8px solid transparent;
-			border-image: url("small-box-profile-aoe2de.png") 8 round;
+			border-image: image_url("small-box-profile-aoe2de.png") 8 round;
 			h3 {
 				text-align: center;
 			}
@@ -135,7 +135,7 @@
 							position: relative;
 							.player-image {
 								border: 6px solid transparent;
-								border-image: url("image-profile-aoe2de.png") 5 round;
+								border-image: image_url("image-profile-aoe2de.png") 5 round;
 			    				background-size: cover;
 			    				background-position: center;
 			    				background-repeat: no-repeat;
