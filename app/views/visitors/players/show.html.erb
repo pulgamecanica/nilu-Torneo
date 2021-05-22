@@ -26,85 +26,87 @@
 	  		<h3>Matches</h3>
 	  		<hr>
 	  		<% @player.player_1_matches.or(@player.player_2_matches).order(:round).each do |match| %>
-	  			<div class="match-container">
-					<table class="table">
-				        <thead>
-			          		<tr class="active-dark">
-					            <th></th>
-					            <th class="table-menu-player">Jugador</th>
-					            <th class="table-winner">Ganador</th>
-					            <th class="table-civ">Civilización</th>
-					            <th class="table-likes">Likes</th>
-					            <th class="table-votes">Votos</th>
-					            <th class="table-team">Equipo</th>
-				          	</tr>
-				        </thead>
-				        <tbody>
-				          	<tr>
-					            <td rowspan="3" class="round-vertical"> 
-									<h3>Round <%= match.round %> </h3>
-								</td>
-					            <td class="table-player"> 
-					            	<% if match.player_1.profile_image.present? %>
-										<div class="player-image" style="background-image: url(<%= url_for(match.player_1.profile_image) %>);"></div> 
-									<% else %>
+	  			<%= link_to visitor_match_path(match)  do %>
+		  			<div class="match-container">
+						<table class="table">
+					        <thead>
+				          		<tr class="active-dark">
+						            <th></th>
+						            <th class="table-menu-player">Jugador</th>
+						            <th class="table-winner">Ganador</th>
+						            <th class="table-civ">Civilización</th>
+						            <th class="table-likes">Likes</th>
+						            <th class="table-votes">Votos</th>
+						            <th class="table-team">Equipo</th>
+					          	</tr>
+					        </thead>
+					        <tbody>
+					          	<tr>
+						            <td rowspan="3" class="round-vertical"> 
+										<h3><%= link_to "Round #{match.round}", visitor_match_path(match) %></h3>
+									</td>
+						            <td class="table-player"> 
+						            	<% if match.player_1.profile_image.present? %>
+											<div class="player-image" style="background-image: url(<%= url_for(match.player_1.profile_image) %>);"></div> 
+										<% else %>
+											<div class="player-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></div> 
+						            	<% end %>
+						            	<div class="player-name">
+						            		<h4 class="name_flag_1">
+						            			<%= link_to visitor_player_path(match.player_1) do %>
+						            				<%= match.player_1.name %>&nbsp&nbsp&nbsp&nbsp
+						            			<% end %>
+						            		</h4>
+						            	</div>
+						            </td>
+						            <td>
+						            	<% if match.player_1.eql? match.winner %>
+						            		<i class="fas fa-crown" style="color: #c9a42c; font-size: 180%;"></i>
+						            	<% else %>
+						            		-
+						            	<% end %>
+						            </td>
+						            <td> <%= match.player_1_civilization.present? ? match.player_1_civilization : "-" %> </td>
+						            <td> <%= match.player_1.likes.to_i %>
+						            <td> <%= match.vote_player_1.to_i %>
+						            <td>1</td>	
+				          		</tr>
+					          	<tr class="active-dark">
+						            <td class="table-player"> 
+						            	<% if match.player_2.profile_image.present? %>
+												<div class="player-image" style="background-image: url(<%= url_for(match.player_2.profile_image) %>);"></div> 
+										<% else %>
 										<div class="player-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></div> 
-					            	<% end %>
-					            	<div class="player-name">
-					            		<h4 class="name_flag_1">
-					            			<%= link_to visitor_player_path(match.player_1) do %>
-					            				<%= match.player_1.name %>&nbsp&nbsp&nbsp&nbsp
-					            			<% end %>
-					            		</h4>
-					            	</div>
-					            </td>
-					            <td>
-					            	<% if match.player_1.eql? match.winner %>
-					            		<i class="fas fa-crown" style="color: #c9a42c; font-size: 180%;"></i>
-					            	<% else %>
-					            		-
-					            	<% end %>
-					            </td>
-					            <td> <%= match.player_1_civilization.present? ? match.player_1_civilization : "-" %> </td>
-					            <td> <%= match.player_1.likes.to_i %>
-					            <td> <%= match.vote_player_1.to_i %>
-					            <td>1</td>	
-			          		</tr>
-				          	<tr class="active-dark">
-					            <td class="table-player"> 
-					            	<% if match.player_2.profile_image.present? %>
-											<div class="player-image" style="background-image: url(<%= url_for(match.player_2.profile_image) %>);"></div> 
-									<% else %>
-									<div class="player-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></div> 
-					            	<% end %><div class="player-name">
-					            		<h4 class="name_flag_2">
-					            			<%= link_to visitor_player_path(match.player_2) do %>
-					            				<%= match.player_2.name %>&nbsp&nbsp&nbsp&nbsp
-					            			<% end %>
-					            		</h4>
-					            	</div>
-					            </td>
-					            <td>
-					            	<% if match.player_2.eql? match.winner %>
-					            		<i class="fas fa-crown" style="color: #d4af37; font-size: 180%;"></i>
-					            	<% else %>
-					            		-
-					            	<% end %>
-					            </td>
-					            <td> <%= match.player_2_civilization.present? ? match.player_2_civilization : "-" %> </td>
-					            <td> <%= match.player_2.likes.to_i %>
-					            <td> <%= match.vote_player_2.to_i %>
-					            <td>2</td>
-				          	</tr>
-				          	<tr class=bottom-table>
-					            <td colspan="100%"></td>
-				          	</tr>
-				          	<tr class="active-dark">
-					            <td colspan="100%">Larry the Bird</td>
-			          		</tr>
-				        </tbody>
-			      	</table>
-				</div>
+						            	<% end %><div class="player-name">
+						            		<h4 class="name_flag_2">
+						            			<%= link_to visitor_player_path(match.player_2) do %>
+						            				<%= match.player_2.name %>&nbsp&nbsp&nbsp&nbsp
+						            			<% end %>
+						            		</h4>
+						            	</div>
+						            </td>
+						            <td>
+						            	<% if match.player_2.eql? match.winner %>
+						            		<i class="fas fa-crown" style="color: #d4af37; font-size: 180%;"></i>
+						            	<% else %>
+						            		-
+						            	<% end %>
+						            </td>
+						            <td> <%= match.player_2_civilization.present? ? match.player_2_civilization : "-" %> </td>
+						            <td> <%= match.player_2.likes.to_i %>
+						            <td> <%= match.vote_player_2.to_i %>
+						            <td>2</td>
+					          	</tr>
+					          	<tr class=bottom-table>
+						            <td colspan="100%"></td>
+					          	</tr>
+					          	<tr class="active-dark">
+						            <td colspan="100%">Larry the Bird</td>
+				          		</tr>
+					        </tbody>
+				      	</table>
+					</div>
+				<% end %>
 	  		<% end %>
 	  	</div>
 	  	<div class="box d">
@@ -125,7 +127,6 @@
 		falgs1[i].style.backgroundColor = color1;
 		falgs2[i].style.backgroundColor = color2;
 	}
-
 	function getRandomColor() {
 		let colors = ["#bf4d4f", "#6a65d0", "#c85ce2", "#70b953", "#eded6f", "#73bcbf", "#919193", "#db9c5b"];
 		return colors[Math.floor(Math.random() * colors.length)];

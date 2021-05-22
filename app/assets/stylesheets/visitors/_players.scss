@@ -100,6 +100,9 @@
 				margin: auto;
 				width: 60%;
 			}
+			a {
+				text-decoration: none;
+			}
 			.match-container {
 				border: 2px solid #4D2B12;
 				margin: 2em;
@@ -126,6 +129,9 @@
 							padding: 3em 0;
 							white-space: nowrap;
   							overflow: hidden;
+  							a {
+  								color: #232323;
+  							}
 						}
 						.table-menu-player {
 							text-align: left;
