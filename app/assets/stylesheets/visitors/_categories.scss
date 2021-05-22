@@ -91,9 +91,10 @@ html {
 						background-image: image_url(asset_path('button-profile-aoe2de.png'));
 						background-repeat: no-repeat;
 						background-position: center;
+						margin: auto;
 						padding: 18px 125px;
 						bottom: 0;
-						left: 4%;
+
 					}
 				}
 			}
@@ -155,12 +156,6 @@ html {
 		}
 		.visitors-container {
 			.big-container {
-				.category-card{
-					text-align: center;
-					a {
-						left: 20% !important;
-					}
-				}
 				.category-column:last-child {
 					margin-bottom: 8em;
 				}
@@ -173,7 +168,4 @@ html {
 			}
 		}
 	}
-
 }
-
-
