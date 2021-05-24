@@ -53,6 +53,13 @@ html {
 				}
 				.box-container {
 					opacity: 0.9;
+					.render-container {
+						border: 8px solid transparent;
+						border-image: image_url("small-box-profile-aoe2de.png") 4 round;
+						.card-main-header {
+							background-color: rgba(208, 179, 146, 0.85);
+						}
+					}
 					#players-container{
 						.player-field:hover {
 							background-color: lightgray;

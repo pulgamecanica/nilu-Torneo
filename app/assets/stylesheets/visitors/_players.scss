@@ -135,7 +135,8 @@
 						}
 						.table-menu-player {
 							text-align: left;
-
+							width: 250px;
+							display: block;
 						}
 						.table-player {
 							text-align: left;
@@ -170,19 +171,19 @@
 							}
 						}
 						.table-winner{
-							width: 10%;
+							width: 100px;
 						}
 						.table-civ {
-							width: 15%;
+							width: 150px;
 						}
 						.table-likes {
-							width: 15%;
+							width: 100px;
 						}
 						.table-votes {
-							width: 15%;
+							width: 100px;
 						}
 						.table-team {
-							width: 15%;
+							width: 100px;
 						}
 					}
 					tr:hover {
@@ -192,6 +193,37 @@
 						background-color: rgb(179, 152, 125);
 					}
 				}
+			}
+		}
+	}
+}
+
+@media (max-width: 1200px) {
+	.visitor-player-container {
+		.wrapper {
+			.b {
+				margin: 1em;
+			}
+			.c {
+				display: none;
+			}
+			.e {
+				grid-column: 1 / 4 ;
+				margin: 10px;
+			}
+		}
+	}
+}
+@media (max-width: 600px) {
+	.visitor-player-container {
+		.wrapper {
+			.a {
+				grid-column: 1 / 4 ;
+				margin: 1em 0;
+			}
+			.b {
+				grid-column: 1 / 4 ;
+				margin: 0;
 			}
 		}
 	}
