@@ -40,6 +40,13 @@
 		</div>
 		<div class="footer-down">
 			<a class="btn btn-dark" href="https://github.com/pulgamecanica" target="_blank" role="button">By pulgamecanica <i class="fab fa-github"></i></a>
+			<% if current_admin.present? %>
+				<%= link_to categories_path do %>
+					<div class="mt-1">
+						<button class= "btn btn-seconday d-block m-auto bg-secondary"> ADMINS <i class="fas fa-tools"></i></button>
+					</div>
+				<% end %>
+			<% end %>
 		</div>
 	</div>
 </div>
@@ -50,7 +57,7 @@ var currentScrollPos = window.pageYOffset;
   if (prevScrollpos > currentScrollPos) {
     document.getElementById("footer").style.bottom = "0.5em";
   } else {
-    document.getElementById("footer").style.bottom = "-100px";
+    document.getElementById("footer").style.bottom = "-150px";
   }
   prevScrollpos = currentScrollPos;
 }
