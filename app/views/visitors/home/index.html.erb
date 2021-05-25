@@ -17,7 +17,7 @@
 	<div class="big-container bg-info" id="background_image_container">
 <% end %>
 	<div class="container categories-container">
-		<div class="row m-0">
+		<div class="row m-0 cat-row">
 	  	<% @categories.each do |category| %>
 	  		<div class="col-md-6 col-lg-4 mt-5 category-column">
 				<div class="card category-card">
@@ -43,7 +43,7 @@
 			<% if current_admin.present? %>
 				<%= link_to categories_path do %>
 					<div class="mt-1">
-						<button class= "btn btn-seconday d-block m-auto bg-secondary"> ADMINS <i class="fas fa-tools"></i></button>
+						<button class= "btn btn-seconday d-block m-auto bg-secondary"><span> ADMINS </span><i class="fas fa-tools"></i></button>
 					</div>
 				<% end %>
 			<% end %>

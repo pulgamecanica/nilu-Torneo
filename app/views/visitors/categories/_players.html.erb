@@ -2,15 +2,27 @@
   <%= link_to visitor_player_path(player), class: "text-decoration-none" do %>
     <li class="list-group-item player-field">
       <div class="row">
-        <div class="col-2">
+        <div class="col-md-2">
           <% if player.profile_image.present? %>
             <div class="header-image position-absolute" style="background-image: url(<%= url_for(player.profile_image) %>);"></div>
           <% end %>
         </div>
-        <div class="col-auto col-sm-10 mt-3 mb-3">
-          <h5 class="mb-1 text-dark"><%= player.name %> (<%= player.rank %>)</h5>
+        <div class="col-md-8 col-sm-8 mt-3 mb-3">
+          <h5 class="mb-1 text-dark d-inline"><%= player.name %> (<%= player.rank %>)</h5>
+          <div class="d-inline">
+            <% form_with(url: visitor_like_player_path, method: "get", remote: false) do |form| %>
+                <%= form.hidden_field(:id, value: player.id) %>
+                <a class="btn btn-light" onclick="likePlayer(<%=player.id%>)"><h5 class="mb-1 text-dark"><i class="fas fa-thumbs-up text-primary"></i></h5></a>
+                <%= form.submit "Search", class: "d-none", id: "like_submit#{player.id}" %>
+            <% end %>
+          </div>
         </div>
       </div>
     </li>
   <% end %>
 <% end %>
+<script>
+function likePlayer(id) {
+  $("#like_submit"+id).trigger("click");
+}
+</script>

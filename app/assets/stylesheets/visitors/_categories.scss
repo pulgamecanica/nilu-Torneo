@@ -67,6 +67,12 @@ html {
 					}
 					.match-players-card {
 						border: none;
+						.card-body {
+							.match-date {
+								position: absolute;
+								right: 10px;
+							}
+						}
 					}
 					.match-players-card:hover {
 						background-color: lightgray;
@@ -93,14 +99,14 @@ html {
 					}
 					a {
 						position: absolute;
+						bottom: 1em;
 						font-size: 120%;
 						color: rgb(234, 190, 170);
 						background-image: image_url(asset_path('button-profile-aoe2de.png'));
 						background-repeat: no-repeat;
 						background-position: center;
 						margin: auto;
-						padding: 18px 125px;
-						bottom: 0;
+						padding: 0 6em;
 
 					}
 				}
@@ -126,14 +132,13 @@ html {
 		}
 	}
 }
-@media (min-width: 1000px) {
-	body{
-		.big-container {
-			.categories-container{
-				position: fixed;
-				top: 50%;
-				left: 50%;
-				transform: translate(-50%, -50%);
+@media (min-width: 1200px) {
+	.big-container {
+		.box-container {
+			#players-container{
+				.like-player-button {
+					
+				}
 			}
 		}
 	}
@@ -173,7 +178,39 @@ html {
 				#footer {
 					left: 30% !important;
 				}
+				.box-container {
+					.match-players-card {
+						.card-body {
+							.match-date {
+								display: none;
+							}
+						}
+					}		
+				}
+				.category-card{
+					a {
+						position: relative !important;
+						margin-top: 2em !important;
+					}
+				}
 			}
 		}
 	}
+}
+@media (max-width: 460px) {
+
+	.big-container {
+		.box-container {
+			#players-container{
+				.header-image {
+					top: 10px;
+					width: 40px;
+				    height: 40px;
+				    border-radius: 50%;
+				    margin: auto;
+
+				}
+			}
+		}
+	}		
 }

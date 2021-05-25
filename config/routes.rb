@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 	get 'visitor_get_random_background', to: 'visitors/categories#visitor_get_random_background'
 	get '/category_player/:id' => 'visitors/players#show', as: :visitor_player
 	get '/category_match/:id' => 'visitors/matches#show', as: :visitor_match
+	get 'visitor_like_player', to: 'visitors/categories#visitor_like_player'
   scope module: 'admins' do 
 		get 'search_players', to: 'players#search_players'
 		get 'search_matches', to: 'matches#search_matches'
