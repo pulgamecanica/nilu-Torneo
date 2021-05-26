@@ -8,10 +8,16 @@
   			<p>Rank: <%= @player.rank %></p>
   			<p>Likes: <%= @player.likes.to_i %></p>
   			<% if @player.profile_image.present? %>
-          		<span class="header-image" style="background-image: url(<%= url_for(@player.profile_image) %>);"></span>
+          		<span class="header-image" style="background-image: url(<%= url_for(@player.profile_image) %>);">
+          		</span>
   			<% else %>
           		<span class="header-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></span>
   			<% end %>
+  			<%= form_with(url: visitor_like_player_path, method: "get", remote: false) do |form| %>
+                <%= form.hidden_field(:id, value: @player.id) %>
+                <a class="btn btn-primr" onclick="likePlayer(<%=@player.id%>)"><h5 class="mb-1 text-dark"><i class="fas fa-thumbs-up text-secondary"></i></h5></a>
+                <%= form.submit "Search", class: "d-none", id: "like_submit#{@player.id}" %>
+            <% end %>
 		</div>
 	  	<div class="box c">	
 	  		<%= link_to visitor_category_path(@player.category) do %>
@@ -130,6 +136,9 @@
 	function getRandomColor() {
 		let colors = ["#bf4d4f", "#6a65d0", "#c85ce2", "#70b953", "#eded6f", "#73bcbf", "#919193", "#db9c5b"];
 		return colors[Math.floor(Math.random() * colors.length)];
+	}
+	function likePlayer(id) {
+  		$("#like_submit"+id).trigger("click");
 	}
 </script>
 

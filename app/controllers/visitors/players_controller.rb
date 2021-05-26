@@ -5,5 +5,13 @@ module Visitors
 	  	@total_matches = Match.where(player_1: @player).or(Match.where(player_1: @player))
   		@matches_won = Match.where(player_1: @player).where(winner: @player).or(Match.where(player_2: @player).where(winner: @player))	
 	  end
+	  def visitor_like_player
+      @player = Player.find(params[:id])
+      @player.likes = @player.likes.to_i + 1
+      if @player.save
+        notice = "#{@player.name} got +1 like and now has #{@player.likes}"
+      end
+        redirect_to visitor_player_path(@player)
+		end
 	end
 end

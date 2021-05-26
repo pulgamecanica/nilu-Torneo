@@ -62,7 +62,7 @@ module Admins
 
       # Only allow a list of trusted parameters through.
       def match_params
-        params.require(:match).permit(:date, :category_id, :player_1_id, :player_2_id, :round, :winner_id, :player_1_civilization, :player_2_civilization)
+        params.require(:match).permit(:date, :category_id, :player_1_id, :player_2_id, :round, :winner_id, :player_1_civilization, :player_2_civilization, :vote_player_1, :vote_player_2)
       end
   end
 end

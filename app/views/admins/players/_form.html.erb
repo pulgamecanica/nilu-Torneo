@@ -21,7 +21,7 @@
   <% if not player.persisted? %>
     <div class="field">
       <%= form.label :category_id %>
-      <%= form.collection_select :category_id, Category.all, :id, :title, class: "form-controll m-3" %>
+      <%= form.collection_select :category_id, Category.all, :id, :title, {}, class: "form-control" %>
       <%= form.error_for :category_id, class: "text-danger" %>
     </div>
   <% else %>

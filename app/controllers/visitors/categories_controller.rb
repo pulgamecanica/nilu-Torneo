@@ -23,14 +23,5 @@ module Visitors
 		def visitor_get_random_background
 			@background = Background.get_random_background
 		end
-		def visitor_like_player
-			puts "*** :(***"*10
-      @player = Player.find(params[:id])
-      @player.likes = @player.likes.to_i + 1
-      if @player.save
-        notice = "#{@player.name} got +1 like and now has #{@player.likes}"
-      end
-        redirect_to visitor_category_path(@player.category)
-		end
 	end 
 end
