@@ -32,21 +32,21 @@
 	  		<h3>Matches</h3>
 	  		<hr>
 	  		<% @player.player_1_matches.or(@player.player_2_matches).order(:round).each do |match| %>
-	  			<%= link_to visitor_match_path(match)  do %>
-		  			<div class="match-container">
-						<table class="table">
-					        <thead>
-				          		<tr class="active-dark">
-						            <th></th>
-						            <th class="table-menu-player">Jugador</th>
-						            <th class="table-winner">Ganador</th>
-						            <th class="table-civ">Civilización</th>
-						            <th class="table-likes">Likes</th>
-						            <th class="table-votes">Votos</th>
-						            <th class="table-team">Equipo</th>
-					          	</tr>
-					        </thead>
-					        <tbody>
+	  			<div class="match-container">
+					<table class="table">
+				        <thead>
+			          		<tr class="active-dark">
+					            <th></th>
+					            <th class="table-menu-player">Jugador</th>
+					            <th class="table-winner">Ganador</th>
+					            <th class="table-civ">Civilización</th>
+					            <th class="table-likes">Likes</th>
+					            <th class="table-votes">Votos</th>
+					            <th class="table-team">Equipo</th>
+				          	</tr>
+				        </thead>
+				        <tbody>
+				        	<%= link_to visitor_match_path(match) do %>
 					          	<tr>
 						            <td rowspan="3" class="round-vertical"> 
 										<h3><%= link_to "Round #{match.round}", visitor_match_path(match) %></h3>
@@ -106,13 +106,27 @@
 					          	<tr class=bottom-table>
 						            <td colspan="100%"></td>
 					          	</tr>
-					          	<tr class="active-dark">
-						            <td colspan="100%">Larry the Bird</td>
-				          		</tr>
-					        </tbody>
-				      	</table>
-					</div>
-				<% end %>
+					        <% end %>
+				          	<tr class="active-dark">
+					            <td colspan="2" class="vote-form">
+						            <%= form_with(url: visitor_like_match_path, method: "get", remote: false) do |form| %>
+						            	<span class="badge bg-secondary"><%= match.likes.to_i %></span>
+		                				<%= form.hidden_field(:id, value: match.id) %>
+		                				<a class="btn btn-primr" onclick="likeMatch(<%=match.id%>)"><h5 class="mb-1 text-dark"><i class="fas fa-thumbs-up text-secondary"></i></h5></a>
+		                				<%= form.submit "Search", class: "d-none", id: "like_submit#{match.id}" %>
+		            				<% end %>
+	            				</td>
+	            				<td colspan="100%" class="vote-form">
+	        					 	<%= form_with(url: visitor_vote_match_path, method: "get", remote: false) do |form| %>
+		                				<%= form.hidden_field(:id, value: match.id) %>
+							        	<%= form.collection_select :vote_player, [match.player_1] + [match.player_2], :id, :name, {include_blank: true} %>
+		                				<%= form.submit "Votar!"%>
+		            				<% end %>
+	            				</td>
+			          		</tr>
+				        </tbody>
+			      	</table>
+				</div>
 	  		<% end %>
 	  	</div>
 	  	<div class="box d">

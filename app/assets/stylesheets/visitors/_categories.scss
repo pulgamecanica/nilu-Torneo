@@ -61,6 +61,8 @@ html {
 						}
 					}
 					#players-container{
+						max-height: 850px;
+						overflow-x: scroll;
 						.player-field:hover {
 							background-color: lightgray;
 						}
@@ -79,6 +81,10 @@ html {
 					}
 					hr {
 						margin: 0;
+					}
+					#matches-container {
+						max-height: 850px;
+						overflow-x: scroll;
 					}
 				}
 				.box-container:hover{
