@@ -80,13 +80,16 @@
 			<a class="btn twitch-button" href="https://www.twitch.tv/nilusa" target="_blank" role="button"><i class="fab fa-twitch"></i></a>
 			<a class="btn discord-button" href="https://discord.gg/kAGB9G9seF" target="_blank" role="button"><i class="fab fa-discord"></i></a>
 			<a class="btn btn-info" href="https://docs.google.com/document/d/1qmk3QK-E5KjPnmKYDkGHqGd-oOpbTo0TPQQ2eHtUmok/edit?usp=sharing" target="_blank" role="button">Reglas <i class="fas fa-book"></i></a>
+			<p class="disclaimer-button btn btn-primary"><i class="fas fa-info-circle"></i>
+		  		<span class="disclaimer-info">All images belong to their respective owners.<br>Todas las imágenes le pertenecen al dueño respectivo.</span>
+		  	</p>
 		</div>
 		<div class="footer-down">
 			<a class="btn btn-dark" href="https://github.com/pulgamecanica" target="_blank" role="button">By pulgamecanica <i class="fab fa-github"></i></a>
 			<% if current_admin.present? %>
 				<%= link_to categories_path do %>
 					<div class="mt-1">
-						<button class= "btn btn-seconday d-block m-auto bg-secondary"> ADMINS <i class="fas fa-tools"></i></button>
+						<button class= "btn btn-seconday d-block m-auto bg-secondary"><span> ADMINS </span><i class="fas fa-tools"></i></button>
 					</div>
 				<% end %>
 			<% end %>

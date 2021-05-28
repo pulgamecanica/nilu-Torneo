@@ -123,7 +123,8 @@ html {
 				bottom: 0.5em;
 				left: 45%;
 				transition: bottom 0.5s;
-				.footer-up{
+				.footer-up {
+					position: relative;
 					margin-bottom: 0.5em;
 					.twitch-button {
 						background-color: #fff;
@@ -132,6 +133,35 @@ html {
 					.discord-button {
 						background-color: #7289DA;
 						color: #fff;
+					}
+					.disclaimer-button {
+						position: fixed;
+						bottom: 0;
+						right: 0;
+						margin: 0;
+						display: inline-block;						
+					}
+					.disclaimer-info {
+						margin: 0;
+						display: inline;
+						vertical-align: middle;
+						background-color: #555;
+						color: #fff;
+						text-align: center;
+						border-radius: 6px;
+						padding: 0.5rem 0.2rem;
+						position: absolute;
+						z-index: 1;
+						bottom: 125%;
+						right: 0;
+						transition: opacity 0.3s;
+						min-width: 250px;
+						visibility: hidden;
+						opacity: 0;
+					}
+					.disclaimer-button:hover .disclaimer-info{
+						visibility: visible;
+  						opacity: 1;
 					}
 				}
 			}
