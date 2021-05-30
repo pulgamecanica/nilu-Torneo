@@ -24,7 +24,19 @@ module Visitors
 		  end
       redirect_to visitor_match_path(@match)
 	  end
+	  def visitor_match_suggestion
+	  	@match = Match.find(params[:id])
+	  	@suggestion = @match.suggestion.build(title: params[:title], description: params[:description])
+	  	if @suggestion.save
+				notice = "Suggestion sent"
+	  	else
+				notice = "Something went wrong & we couldn't send your suggestion"
+	  	end
+	  		redirect_to visitor_match_path(@match), notice: notice
+	  end
+	  # private 
+	  # 	def match_params
+	  # 		params.require(:match).permit(:id, :title, :description)
+	  # 	end
 	end
 end
-
-

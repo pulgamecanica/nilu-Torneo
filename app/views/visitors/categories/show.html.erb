@@ -1,4 +1,4 @@
-<div class="jumbotron p-3 mb-0">
+<div class="jumbotron p-3 mb-0" id="main-wrapper">
 	<%= link_to "Atras", root_path %>
 	<a href="<%= @category.register_link %>" class="register-button" target="_blank" role="button">Registrarse</a>
 	<% if @category.category_image.present? %>
@@ -9,6 +9,9 @@
   <p class="display-4 text-center m-0"> <%= @category.title %> <span style="font-size: 50%;">(<%= @category.min_rank %>-<%= @category.max_rank %>)</span> </p>
   <p class="text-center lead m-0"> <%= @category.description %> </p>
   <p class="text-center mb-2"> <%= @category.start_date.strftime("%d/%m") %> - <%= @category.end_date.strftime("%d/%m") %> </p>
+  	<div class="text-center">
+		<button onclick="newSuggestion()" class="btn btn-info col-3">Sugerencias!</button>
+	</div>
 </div>
 <% if @background.present? %>
 	<div class="big-container" id="background_image_container" style="background-image: url(<%= url_for(@background.background_image) %>)">
@@ -96,6 +99,23 @@
 		</div>
 	</div>
 </div>
+<span id="imageWindowDisplayer" class="text-center p-5">
+	<%= form_with(url: visitor_category_suggestion_path, method: "get", remote: false) do |form| %>
+		<h2>Sugerencia</h2>
+		<h6><%= @category.title %></h6>
+		<%= form.hidden_field(:id, value: @category.id) %>
+		<div class="field">
+		    <label>Título</label>
+		    <%= form.text_field :title, placeholder: "Título", class: "form-control"%>
+	  	</div>
+	  	<div class="field">
+			<label>Descripción</label>
+		    <%= form.text_area :description, placeholder: "Descripción", class: "form-control" %>
+	  	</div>
+		<%= form.submit "Enviar Sugerencia", class: " mt-2 btn btn-success btn-block"%>
+	<% end %>
+	<i class="fas fa-times-circle" onclick="closeImage()"></i>
+</span>
 <script>
 var prevScrollpos = window.pageYOffset;
 window.onscroll = function() {
@@ -123,4 +143,19 @@ function activateCheckbox(label) {
 function changeBackgroundImage(){
 	$(backgroud_submit).trigger("click");
 }
+function newSuggestion() {
+	document.getElementById("main-wrapper").style.opacity = 0.3;
+	document.getElementById("background_image_container").style.opacity = 0.3;
+	var windowDisplayer = document.getElementById('imageWindowDisplayer');
+	windowDisplayer.style.display = "block";
+}
+function closeImage() {
+	document.getElementById("main-wrapper").style.opacity = 1;
+	document.getElementById("background_image_container").style.opacity = 1;
+	document.getElementById('imageWindowDisplayer').style.display = "none";
+}
+$(document).keydown(function(e) {
+	if (e.keyCode == 27) 
+   		closeImage();
+});
 </script>

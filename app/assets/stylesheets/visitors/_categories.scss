@@ -4,6 +4,18 @@ html {
 		height: 100%;
 		.visitors-container {
 			height: 100%;
+			#alert-notice {
+				z-index: 1999;
+				position: fixed;
+				top: 5px;
+				right: 30%;
+				display: inline-block;
+				p {
+					background-color: rgba(250, 232, 150, 0.8);
+					border-radius: 1em;
+					font-size: 150%;
+				}
+			}
 			.jumbotron {
 				background-color: rgb(208,179,146);
 				border: 8px solid transparent;
@@ -120,6 +132,32 @@ html {
 					}
 				}
 			}
+			#imageWindowDisplayer {
+				position: fixed;
+				background-color: rgba(240, 210, 175, 0.9);
+				z-index: 999;
+				top: 10%;
+				left: 30%;
+				width: 40%;
+				height: 50%;
+				display: none;
+				border-radius: 1em;
+				padding: 1rem;
+				textarea {
+					min-height: 200px;
+				}
+				i {
+					cursor: pointer;
+					position: absolute;
+					top: -5px;
+					right: -5px;
+					font-size: 200%;
+					color: red;
+				}
+				i:hover {
+					font-size: 250%;
+				}
+			}
 			#footer {
 				z-index: 999;
 				position: fixed;
@@ -207,6 +245,12 @@ html {
 			}
 		}
 		.visitors-container {
+			#imageWindowDisplayer {
+				left: 5% !important;
+				top: 10% !important;
+				height: 50% !important;
+				width: 90% !important;
+			}
 			.big-container {
 				.category-column:last-child {
 					margin-bottom: 8em;
@@ -237,7 +281,6 @@ html {
 	}
 }
 @media (max-width: 460px) {
-
 	.big-container {
 		.box-container {
 			#players-container{

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>TornNilu</title>
+    <title>NiluTorneo</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -19,8 +19,14 @@
   <body class="bg-light">
     <div class="visitors-container">
       <% if !notice.nil? || !alert.nil? %>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
+        <span id="alert-notice">
+          <%  if not notice.nil? %>
+            <p class="notice p-3"><%= notice %></p>
+          <% end %>
+          <% if not alert.nil?%>
+            <p class="alert p-3"><%= alert %></p>
+          <% end %>
+        </span>
       <% end %>
       <%= yield %>
     </div>
