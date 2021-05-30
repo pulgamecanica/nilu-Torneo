@@ -3,6 +3,7 @@ class Match < ApplicationRecord
   belongs_to :player_1, class_name: "Player", foreign_key: :player_1_id
   belongs_to :player_2, class_name: "Player", foreign_key: :player_2_id
   belongs_to :winner, class_name: "Player", foreign_key: :winner_id, optional: true
+  has_many :suggestion, as: :suggestable
   validates_presence_of :round
   validate :valid_match_users, :valid_winner
   private

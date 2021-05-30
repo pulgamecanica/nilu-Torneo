@@ -16,7 +16,9 @@
           <%= link_to 'Edit', edit_match_path(game_match), class: "btn btn-primary float-right mr-1" %>
         </span>
         <p class="text-secondary mb-0">
-          <%= game_match.likes %>
+          <% if game_match.likes.to_i != 0 %>
+            <%= game_match.likes %> likes.
+          <% end %>
         </p>
       </div>
     </div>

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   scope module: 'admins' do 
 		get 'search_players', to: 'players#search_players'
 		get 'search_matches', to: 'matches#search_matches'
+		resources :suggestions
 		resources :matches
 		resources :players
 		resources :categories

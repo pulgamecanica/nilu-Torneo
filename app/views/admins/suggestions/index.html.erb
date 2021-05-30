@@ -1,0 +1,47 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Suggestions</h1>
+
+<div class="d-flex">
+  <% @suggestable_types.each do |type|%>
+    <% if @suggestions.respond_to?(type) %>
+      <div class="card m-1 flex-fill">
+        <h5 class="card-header text-center"><%= type.upcase %></h5>
+        <div class="card-body list-group list-group-flush p-1 border-none">
+          <% @suggestions.send(type).each do |suggestion|%>
+            <div class="list-group-item mb-1">
+              <h4 class="card-title"><%= suggestion.title %>
+                <% if suggestion.status == "pending" %>
+                  <span class="badge bg-warning float-right"> <h6 class="m-0"><%= suggestion.status %></h6></span>
+                <% elsif suggestion.status == "closed" %>
+                  <span class="badge bg-dark float-right"> <h6 class="m-0 text-light"><%= suggestion.status %><i class='fas fa-check'></i></h6></span>
+                <% else %>
+                  <span class="badge bg-success float-right"> <h6 class="m-0"><%= suggestion.status %></h6></span>
+                <% end %>
+              </h4>
+              <p class="card-text mb-2"><%= suggestion.description %></p>
+              <% if suggestion.status == "closed" %>
+                <%= form_with(model: suggestion, local: false) do |form| %>
+                  <%= form.hidden_field :status, value: 'reopened' %>
+                  <%= form.submit "Reopen Suggestion", class: "btn btn-danger btn-block" %>
+                <% end %>
+              <% else %>
+                <%= form_with(model: suggestion, local: false) do |form| %>
+                  <% if suggestion.suggestable_type == "Player" %>
+                    <%= link_to 'Edit Now!', edit_player_path(suggestion.suggestable) ,class:"btn btn-primary" %>
+                  <% elsif suggestion.suggestable_type == "Category" %>
+                    <%= link_to 'Edit Now!', edit_category_path(suggestion.suggestable) ,class:"btn btn-primary" %>
+                  <% elsif suggestion.suggestable_type == "Match" %>
+                    <%= link_to 'Edit Now!', edit_match_path(suggestion.suggestable) ,class:"btn btn-primary" %>
+                  <% end %>
+                  <%= form.hidden_field :status, value: 'closed' %>
+                  <%= form.submit "Reviewed!", class: "btn btn-success" %>
+                <% end %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+      </div> 
+    <% end %>
+  <% end %>
+</div>

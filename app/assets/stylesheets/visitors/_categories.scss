@@ -36,6 +36,9 @@ html {
 				background-position: center;
 				background-repeat: repeat-y;
 				background-size: cover;
+				.categories-container {
+					padding-bottom: 3rem;
+				}
 				#change_background_button {
 					z-index: 1;
 					position: absolute;

@@ -42,7 +42,9 @@
 			    </p> 
 
 				<p class="text-secondary mb-0">
-				  <%= @match.likes %>
+				  <% if @match.likes.to_i != 0 %>
+		            <%= @match.likes %> likes.
+		          <% end %>
 				</p>
 			</div>
 		</div>
