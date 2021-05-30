@@ -5,7 +5,7 @@
   			<p>Bio: <%= @player.bio %> </p>
   			<p>Total de Partidas: <%= @player.player_1_matches.or(@player.player_2_matches).count %> </p>
   			<p>Partidas Ganadas: <%= @matches_won.count %> </p>
-  			<p>Rank: <%= @player.rank %></p>
+  			<!-- <p>Rank: <= @player.rank ></p> -->
   			<p>Likes: <%= @player.likes.to_i %></p>
   			<% if @player.profile_image.present? %>
           		<span class="header-image" style="background-image: url(<%= url_for(@player.profile_image) %>);">

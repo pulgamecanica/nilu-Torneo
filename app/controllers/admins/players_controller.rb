@@ -61,7 +61,7 @@
 
       # Only allow a list of trusted parameters through.
       def player_params
-        params.require(:player).permit(:name, :category_id, :bio, :rank, :age, :birthday, :profile_image)
+        params.require(:player).permit(:name, :category_id, :bio, :rank, :age, :birthday, :profile_image, :seeding)
       end
   end
 end

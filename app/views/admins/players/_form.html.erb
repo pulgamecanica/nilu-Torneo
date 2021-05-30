@@ -18,6 +18,12 @@
     <%= form.error_for :rank, class: "text-danger" %>
   </div>
   
+  <div class="field">
+    <%= form.label :seeding %>
+    <%= form.number_field :seeding, class: "form-control" %>
+    <%= form.error_for :seeding, class: "text-danger" %>
+  </div>
+
   <% if not player.persisted? %>
     <div class="field">
       <%= form.label :category_id %>
