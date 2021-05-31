@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= form.label :date %>
-    <%= form.date_select :date, class: "form-control" %>
+    <%= form.date_select :date, {}, {class: "form-control"} %>
   </div>
 
   <div class="field">
@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :player_1_id %>
-    <%= form.collection_select :player_1_id, Player.order(:rank), :id, :name, {}, class: "form-control" %>
+    <%= form.collection_select :player_1_id, Player.order(:name), :id, :name, {}, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -33,18 +33,24 @@
 
   <div class="field">
     <%= form.label :player_2_id %>
-    <%= form.collection_select :player_2_id, Player.order(:rank), :id, :name, {}, class: "form-control" %>
+    <%= form.collection_select :player_2_id, Player.order(:name), :id, :name, {}, class: "form-control" %>
   </div>
 
   <div class="field">
     <label>Player 2 Civ</label>
     <%= form.select :player_2_civilization, options_for_select(aoe_civilizations.sort(), match.player_2_civilization), {}, class: "form-control" %>
   </div>
-
-  <div class="field">
-    <%= form.label :winner_id %>(Optional)
-    <%= form.collection_select :winner_id, Player.order(:rank), :id, :name, {include_blank: true }, class: "form-control" %>
-  </div>
+  <% if match.persisted? %>
+    <div class="field">
+      <%= form.label :winner_id %>(Optional)
+      <%= form.select :winner_id, options_for_select([[match.player_1.name, match.player_1.id], [match.player_2.name, match.player_2.id]], match.winner_id), {include_blank: true }, class: "form-control" %>
+    </div>
+  <% else %>
+    <div class="field">
+      <%= form.label :winner_id %>(Optional)
+      <%= form.collection_select :winner_id, Player.order(:rank), :id, :name, {include_blank: true }, class: "form-control" %>
+    </div>
+  <% end %>
 
   <div class="field">
     <%= form.label :round %>

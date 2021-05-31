@@ -10,7 +10,7 @@
   <p class="text-center lead m-0"> <%= @category.description %> </p>
   <p class="text-center mb-2"> <%= @category.start_date.strftime("%d/%m") %> - <%= @category.end_date.strftime("%d/%m") %> </p>
   	<div class="text-center">
-		<button onclick="newSuggestion()" class="btn btn-info col-3">Sugerencias!</button>
+		<button onclick="newSuggestion()" class="btn btn-info col-md-3 col-sm-6">Sugerencias!</button>
 	</div>
 </div>
 <% if @background.present? %>

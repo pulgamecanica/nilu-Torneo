@@ -7,7 +7,7 @@
 		<%= form.hidden_field :category_id %>
 		<%= form.hidden_field :player_1_id %>
 		<div class="input-group mt-3">
-			<span class="text-dark rounded p-2">
+			<span class="text-dark p-2">
 				<%= form.label :round %>
 			</span>
 			<%= form.number_field :round, class: "form-control" %>
@@ -16,7 +16,7 @@
 			<div class="input-group-addon bg-light text-dark rounded p-2">
 				<%= @player.name =%> vs 
 			</div>
-			<%= form.collection_select :player_2_id, @player.category.players.where.not(id: @player.id), :id, :name, {},class: "form-control" %>
+			<%= form.collection_select :player_2_id, @player.category.players.where.not(id: @player.id).order(:name), :id, :name, {},class: "form-control" %>
 		</div>
 		<%= form.submit class: "btn btn-primary btn-block mt-3" %>
 	<% end %>
