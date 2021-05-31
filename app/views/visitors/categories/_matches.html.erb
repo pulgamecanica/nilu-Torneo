@@ -9,10 +9,10 @@
               <p class="text-dark match-date"> 
                 <%= game_match.date.strftime("%m/%d/%Y")%> 
               </p> 
-              <span class="card-title text-secondary h5">
-                <%= game_match.player_1.name %> (<%= game_match.player_1.rank %>)
-                vs
-                <%= game_match.player_2.name %> (<%= game_match.player_2.rank %>)
+              <span class="card-title text-secondary h4">
+                <%= game_match.player_1.name %> <!-- (<= game_match.player_1.rank >) -->
+                <span class="text-info">vs</span>
+                <%= game_match.player_2.name %> <!-- (<= game_match.player_2.rank >) -->
               </span>
             </div>
           </div>
