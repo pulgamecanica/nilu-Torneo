@@ -1,8 +1,8 @@
 <div class="jumbotron p-3 mb-0">
   <h1 class="display-4 text-center main-title">NILUTORNEO</h1>
-  <p class="text-center lead">1er NILUTORNEO, inscripción abierta a partir del 18 de Mayo (1 vs 1)</p>
+  <p class="text-center lead">Reglas del Torneo</p>
   <p class="text-center">
-    <a class="more-info" href="https://docs.google.com/document/d/1qmk3QK-E5KjPnmKYDkGHqGd-oOpbTo0TPQQ2eHtUmok/edit?usp=sharing" target="_blank" role="button">Saber más</a>
+  	<%= link_to "Menú", root_path, class: "more-info"%>
   </p>
 </div>
 <% if Background.get_random_background.present? %>
@@ -16,40 +16,8 @@
 <% else %>
 	<div class="big-container bg-info" id="background_image_container">
 <% end %>
-	<div class="container categories-container">
-		<div class="row m-0 cat-row">
-		  	<% @categories.each do |category| %>
-		  		<div class="col-md-6 col-lg-4 mt-5 category-column">
-					<div class="card category-card">
-					  	<img class="card-img-top category-image" src="<%= category.category_image.present? ? url_for(category.category_image) : asset_path('aoe_logo_1.png') %>" alt="Category-image Imagen-Categoria">
-					  <div class="card-body d-flex flex-column">
-					    <h3 class="card-title"> <%= category.title %> </h3>
-					    <p class="card-text"> <%= truncate(category.description, length: 50)%> </p>
-					    <%= link_to "Visitar", visitor_category_path(category), class: "cat-link" %>
-					  </div>
-					</div>
-				</div>
-			<% end %>
-			<%= link_to info_path  do %>
-				<div class="col-md-12 col-lg-8 mt-5 category-column">
-					<div class="card category-card text-center">
-						<div class="card-body d-flex flex-column">
-						    <h1 class="card-title text-dark"> Avisos </h1>
-						    <p class="card-text text-secondary"> Últimas noticias: </p>
-						    <% @posts.each do |post| %>
-						    	<h5 class="text-info"><%= post.title%></h5>
-						    	<p class="text-info"><%= post.description.truncate(30)%></p>
-						    	<% if post.post_image.present? %>
-						    		<%= image_tag(post.post_image) %>
-						    	<% end %>
-						    <% end %>
-						    <%= link_to "", info_path, class: "cat-link" %>
-						</div>
-						
-					</div>
-				</div>
-			<% end %>
-		</div>
+	<div class="container pb-5">
+		<%= render 'posts', posts: @posts %>
 	</div>
 	<div id="footer">
 		<div class="footer-up">

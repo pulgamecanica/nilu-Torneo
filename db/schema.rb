@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_05_30_224849) do
+ActiveRecord::Schema.define(version: 2021_06_03_202204) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -74,6 +74,16 @@ ActiveRecord::Schema.define(version: 2021_05_30_224849) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "information", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "link1"
+    t.string "link2"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
     t.bigint "category_id", null: false
@@ -106,6 +116,18 @@ ActiveRecord::Schema.define(version: 2021_05_30_224849) do
     t.bigint "category_id", null: false
     t.integer "seeding"
     t.index ["category_id"], name: "index_players_on_category_id"
+  end
+
+  create_table "posts", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.string "link1"
+    t.string "link2"
+    t.boolean "active"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.string "link1_name"
+    t.string "link2_name"
   end
 
   create_table "suggestions", force: :cascade do |t|

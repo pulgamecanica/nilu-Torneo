@@ -48,6 +48,22 @@ html {
 				background-position: center;
 				background-repeat: repeat-y;
 				background-size: cover;
+				.container {
+					.card {
+						background-color: rgba(208,179, 146, 0.9);
+						.card-body {
+							img {
+								max-width: 40%;
+							}
+						}
+						.links {
+							margin: auto;
+							a {
+								margin-bottom: 1em;
+							}
+						}
+					}
+				}
 				.categories-container {
 					padding-bottom: 3rem;
 				}
@@ -118,7 +134,7 @@ html {
 					}&:hover {
 						transform: scale(1.1);
 					}
-					a {
+					.cat-link {
 						position: absolute;
 						bottom: 1em;
 						font-size: 120%;
@@ -129,6 +145,9 @@ html {
 						margin: auto;
 						padding: 0 6em;
 
+					}
+					a {
+						text-decoration: none;
 					}
 				}
 			}

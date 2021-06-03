@@ -1,0 +1,42 @@
+<div class="container">
+  <h2 class="d-flex justify-content-between mb-4">
+    <span>Info <span class="badge badge-secondary"><%= Post.all.count %></span></span> 
+    <%= link_to 'New Information', new_post_path, class: "btn btn-primary"%>
+  </h2>
+  <% @posts.each do |post| %>
+    <%= link_to edit_post_path(post), class: "text-decoration-none" do %>
+      <div class="card mb-2 category-card">
+        <h5 class="card-header text-primary d-flex justify-content-between">
+          <%= post.title %>
+          <% if post.active %>
+            <span class="badge bg-success text-light ">Active</span>
+          <% else %>
+            <span class="badge bg-danger text-light">Inactive</span>
+          <% end %>
+        </h5>
+        <div class="row">
+          <div class="card-body">
+            <% if post.post_image.present? %>
+                <div class="header-image rounded" style="background-image: url(<%= url_for(post.post_image) %>);"></div>
+              <% end %>
+          </div>
+          <div class="card-body text-secondary">
+            <span class="card-title text-secondary h5">
+              <span>
+              <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger float-right ml-1" %>
+              <%= link_to 'Edit', edit_post_path(post), class: "btn btn-primary float-right mr-1" %>
+              </span>
+              <%= post.description %>
+              <% if post.link1.present? %>
+                <h6 class="text-primary"><a href="<%= post.link1 %>" target="_blank">Link1 </a></h6>
+              <% end %>
+              <% if post.link2.present? %>
+                <h6 class="text-primary"><a href="<%= post.link2 %>" target="_blank">Link2</a></h6>
+              <% end %>
+            </span>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

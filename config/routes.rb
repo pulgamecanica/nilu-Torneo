@@ -13,7 +13,8 @@ Rails.application.routes.draw do
 	get 'visitor_match_suggestion', to: 'visitors/matches#visitor_match_suggestion'
 	get 'visitor_player_suggestion', to: 'visitors/players#visitor_player_suggestion'
 	get 'visitor_category_suggestion', to: 'visitors/categories#visitor_category_suggestion'
-  scope module: 'admins' do 
+	get 'info', to: 'visitors/home#info'
+  scope module: 'admins' do
 		get 'search_players', to: 'players#search_players'
 		get 'search_matches', to: 'matches#search_matches'
 		resources :suggestions
@@ -21,5 +22,6 @@ Rails.application.routes.draw do
 		resources :players
 		resources :categories
 		resources :backgrounds
+		resources :posts
   end
 end

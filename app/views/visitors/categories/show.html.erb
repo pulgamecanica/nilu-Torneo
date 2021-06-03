@@ -28,7 +28,7 @@
 		<div class="col-md-4 mb-3 box-container">
 			<div class="card text-center render-container">
 			  <h4 class="card-header card-main-header">
-			    Jugadores <span class="badge badge-secondary" id="players-badge"> <%= @players.all.count %> </span>
+			    Jugadores <span class="badge badge-secondary" id="players-badge"> <%= @players.all.count %> </span><span class="badge badge-info float-right text-dark">Seeding</span>
 			  </h4>
 			  <div class="card-body">
 					<%= form_tag(visitor_search_players_path, method: "get", remote: true) do %>

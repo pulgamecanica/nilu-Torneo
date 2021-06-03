@@ -1,0 +1,51 @@
+<div>
+<%= form_with(model: post) do |form| %>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link1 %>
+    <%= form.text_field :link1, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link1_name %>
+    <%= form.text_field :link1_name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :link2 %>
+    <%= form.text_field :link2, class: "form-control"%>
+  </div>
+
+  <div class="field">
+    <%= form.label :link2_name %>
+    <%= form.text_field :link2_name, class: "form-control" %>
+  </div>
+
+  <div class="field">
+    <%= form.label :active %>
+    <%= form.check_box :active, class: "form-control" %>
+  </div>
+
+  <% if post.post_image.present? %>
+    <div id="category_image">
+      <%= image_tag post.post_image, class: "rounded mx-auto d-block mt-2" %>
+    </div>
+    <%= form.file_field :post_image, class: "mt-2 mx-auto d-block" %>
+  <% else %>
+    <%= form.file_field :post_image, class: "mt-2 form-control" %> 
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit class: 'form-control btn btn-primary mt-2 mb-2'%>
+  </div>
+<% end %>
