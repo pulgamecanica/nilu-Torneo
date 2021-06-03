@@ -49,6 +49,9 @@ html {
 				background-repeat: repeat-y;
 				background-size: cover;
 				.container {
+					.avisos {
+						overflow: auto;
+					}
 					.card {
 						background-color: rgba(208,179, 146, 0.9);
 						.card-body {
