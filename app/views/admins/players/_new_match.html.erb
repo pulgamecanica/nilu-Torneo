@@ -16,7 +16,7 @@
 			<div class="input-group-addon bg-light text-dark rounded p-2">
 				<%= @player.name =%> vs 
 			</div>
-			<%= form.collection_select :player_2_id, @player.category.players.where.not(id: @player.id).order(:name), :id, :name, {},class: "form-control" %>
+			<%= form.collection_select :player_2_id, @player.category.players.where.not(id: @player.id).order(:name), :id, :name, {include_blank: true},class: "form-control" %>
 		</div>
 		<%= form.submit class: "btn btn-primary btn-block mt-3" %>
 	<% end %>

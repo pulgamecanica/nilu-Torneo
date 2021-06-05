@@ -9,9 +9,13 @@
       </h6>
       <div class="card-body">
         <span class="card-title text-secondary h5">
-          <%= game_match.player_1.name %> (<%= game_match.player_1.rank %>)
+          <% if game_match.player_1.present? %>
+            <%= game_match.player_1.name %> (<%= game_match.player_1.rank %>)
+          <% end %>
           vs
-          <%= game_match.player_2.name %> (<%= game_match.player_2.rank %>)
+          <% if game_match.player_2.present? %>
+            <%= game_match.player_2.name %> (<%= game_match.player_2.rank %>)
+          <% end %>
           <%= link_to 'Destroy', game_match, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-danger float-right ml-1" %>
           <%= link_to 'Edit', edit_match_path(game_match), class: "btn btn-primary float-right mr-1" %>
         </span>

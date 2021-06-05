@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :player_1_id %>
-    <%= form.collection_select :player_1_id, Player.order(:name), :id, :name, {}, class: "form-control" %>
+    <%= form.collection_select :player_1_id, Player.order(:name), :id, :name, {include_blank: true}, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -33,7 +33,7 @@
 
   <div class="field">
     <%= form.label :player_2_id %>
-    <%= form.collection_select :player_2_id, Player.order(:name), :id, :name, {}, class: "form-control" %>
+    <%= form.collection_select :player_2_id, Player.order(:name), :id, :name, {include_blank: true}, class: "form-control" %>
   </div>
 
   <div class="field">
@@ -43,7 +43,11 @@
   <% if match.persisted? %>
     <div class="field">
       <%= form.label :winner_id %>(Optional)
-      <%= form.select :winner_id, options_for_select([[match.player_1.name, match.player_1.id], [match.player_2.name, match.player_2.id]], match.winner_id), {include_blank: true }, class: "form-control" %>
+      <% if match.player_1.nil? || match.player_2.nil? %>
+        <%= form.select :winner_id, [], {}, disabled: true %>
+      <% else %>
+        <%= form.select :winner_id, options_for_select([[match.player_1.name, match.player_1.id], [match.player_2.name, match.player_2.id]], match.winner_id), {include_blank: true }, class: "form-control" %>
+      <% end %>
     </div>
   <% else %>
     <div class="field">

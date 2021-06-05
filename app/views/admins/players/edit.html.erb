@@ -17,7 +17,7 @@
 					<% if player_match.persisted? %>
 						<%= link_to edit_match_path(player_match), class: "text-decoration-none" do %>
 							<h4 class="bg-light p-3 text-center">
-								<%= player_match.player_1.name %> vs <%= player_match.player_2.name %> - Round <%= player_match.round %>
+								<%= player_match.player_1.present? ? player_match.player_1.name : ""%> vs <%= player_match.player_2.present? ? player_match.player_2.name : "" %> - Round <%= player_match.round %>
 								<% if player_match.winner.eql? @player %>
 									<span class="text-success"> - Won</span>
 								<% elsif player_match.winner.present? %>

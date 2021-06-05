@@ -52,17 +52,17 @@
                 <div class="card-body p-1 text-center">
                   <h5 class="card-title text-secondary">
                     <% if game_match.player_1.eql? game_match.winner %>
-                      <span class="text-success"><%= game_match.player_1.name %>(<%= game_match.player_1.rank %>)</span>
+                      <span class="text-success"><%= game_match.player_1.present? ? game_match.player_1.name : "" %>(<%= game_match.player_1.present? ? game_match.player_1.rank : "" %>)</span>
                       vs
-                      <span class="text-secondary"><%= game_match.player_2.name %>(<%= game_match.player_2.rank %>)</span>
+                      <span class="text-secondary"><%= game_match.player_2.present? ? game_match.player_2.name : "" %>(<%= game_match.player_2.present? ? game_match.player_2.rank : "" %>)</span>
                     <% elsif game_match.player_2.eql? game_match.winner %>
-                      <span class="text-secondary"><%= game_match.player_1.name %>(<%= game_match.player_1.rank %>)</span>
+                      <span class="text-secondary"><%= game_match.player_1.present? ? game_match.player_1.name : "" %>(<%= game_match.player_1.present? ? game_match.player_1.rank : "" %>)</span>
                       vs
-                      <span class="text-success"><%= game_match.player_2.name %>(<%= game_match.player_2.rank %>)</span>
+                      <span class="text-success"><%= game_match.player_2.present? ? game_match.player_2.name : "" %>(<%= game_match.player_2.present? ? game_match.player_2.rank : "" %>)</span>
                     <% else %>
-                      <span><%= game_match.player_1.name %>(<%= game_match.player_1.rank %>)</span>
+                      <span><%= game_match.player_1.present? ? game_match.player_1.name : "" %>(<%= game_match.player_1.present? ? game_match.player_1.rank : "" %>)</span>
                       vs
-                      <span><%= game_match.player_2.name %>(<%= game_match.player_2.rank %>)</span>
+                      <span><%= game_match.player_2.present? ? game_match.player_2.name : "" %>(<%= game_match.player_2.present? ? game_match.player_2.rank : "" %>)</span>
                     <% end %>
                   </h5>
                   <h6 class="card-text text-secondary">
