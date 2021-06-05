@@ -55,58 +55,62 @@
 						            <td rowspan="3" class="round-vertical"> 
 										<h3><%= link_to "Round #{match.round}", visitor_match_path(match) %></h3>
 									</td>
-						            <td class="table-player"> 
-						            	<% if match.player_1.profile_image.present? %>
-											<div class="player-image" style="background-image: url(<%= url_for(match.player_1.profile_image) %>);"></div> 
-										<% else %>
-											<div class="player-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></div> 
-						            	<% end %>
-						            	<div class="player-name">
-						            		<h4 class="name_flag_1">
-						            			<%= link_to visitor_player_path(match.player_1) do %>
-						            				<%= match.player_1.name %>&nbsp&nbsp&nbsp&nbsp
-						            			<% end %>
-						            		</h4>
-						            	</div>
-						            </td>
-						            <td>
-						            	<% if match.player_1.eql? match.winner %>
-						            		<i class="fas fa-crown" style="color: #c9a42c; font-size: 180%;"></i>
-						            	<% else %>
-						            		-
-						            	<% end %>
-						            </td>
-						            <td> <%= match.player_1_civilization.present? ? match.player_1_civilization : "-" %> </td>
-						            <td> <%= match.player_1.likes.to_i %>
-						            <td> <%= match.vote_player_1.to_i %>
-						            <td>1</td>	
+									<% if match.player_1.present? %>
+							            <td class="table-player"> 
+							            	<% if match.player_1.profile_image.present? %>
+												<div class="player-image" style="background-image: url(<%= url_for(match.player_1.profile_image) %>);"></div> 
+											<% else %>
+												<div class="player-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></div> 
+							            	<% end %>
+							            	<div class="player-name">
+							            		<h4 class="name_flag_1">
+							            			<%= link_to visitor_player_path(match.player_1) do %>
+							            				<%= match.player_1.name %>&nbsp&nbsp&nbsp&nbsp
+							            			<% end %>
+							            		</h4>
+							            	</div>
+							            </td>
+							            <td>
+							            	<% if match.player_1.eql? match.winner %>
+							            		<i class="fas fa-crown" style="color: #c9a42c; font-size: 180%;"></i>
+							            	<% else %>
+							            		-
+							            	<% end %>
+							            </td>
+							            <td> <%= match.player_1_civilization.present? ? match.player_1_civilization : "-" %> </td>
+							            <td> <%= match.player_1.likes.to_i %>
+							            <td> <%= match.vote_player_1.to_i %>
+							            <td>1</td>
+							        <% end %>	
 				          		</tr>
-					          	<tr class="active-dark">
-						            <td class="table-player"> 
-						            	<% if match.player_2.profile_image.present? %>
-												<div class="player-image" style="background-image: url(<%= url_for(match.player_2.profile_image) %>);"></div> 
-										<% else %>
-										<div class="player-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></div> 
-						            	<% end %><div class="player-name">
-						            		<h4 class="name_flag_2">
-						            			<%= link_to visitor_player_path(match.player_2) do %>
-						            				<%= match.player_2.name %>&nbsp&nbsp&nbsp&nbsp
-						            			<% end %>
-						            		</h4>
-						            	</div>
-						            </td>
-						            <td>
-						            	<% if match.player_2.eql? match.winner %>
-						            		<i class="fas fa-crown" style="color: #d4af37; font-size: 180%;"></i>
-						            	<% else %>
-						            		-
-						            	<% end %>
-						            </td>
-						            <td> <%= match.player_2_civilization.present? ? match.player_2_civilization : "-" %> </td>
-						            <td> <%= match.player_2.likes.to_i %>
-						            <td> <%= match.vote_player_2.to_i %>
-						            <td>2</td>
-					          	</tr>
+								<% if match.player_2.present? %>
+						          	<tr class="active-dark">
+							            <td class="table-player"> 
+							            	<% if match.player_2.profile_image.present? %>
+													<div class="player-image" style="background-image: url(<%= url_for(match.player_2.profile_image) %>);"></div> 
+											<% else %>
+											<div class="player-image" style="background-image: url(<%= asset_path('aoe_logo_1.png') %>);"></div> 
+							            	<% end %><div class="player-name">
+							            		<h4 class="name_flag_2">
+							            			<%= link_to visitor_player_path(match.player_2) do %>
+							            				<%= match.player_2.name %>&nbsp&nbsp&nbsp&nbsp
+							            			<% end %>
+							            		</h4>
+							            	</div>
+							            </td>
+							            <td>
+							            	<% if match.player_2.eql? match.winner %>
+							            		<i class="fas fa-crown" style="color: #d4af37; font-size: 180%;"></i>
+							            	<% else %>
+							            		-
+							            	<% end %>
+							            </td>
+							            <td> <%= match.player_2_civilization.present? ? match.player_2_civilization : "-" %> </td>
+							            <td> <%= match.player_2.likes.to_i %>
+							            <td> <%= match.vote_player_2.to_i %>
+							            <td>2</td>
+						          	</tr>
+						        <% end %>
 					          	<tr class=bottom-table>
 						            <td colspan="100%"></td>
 					          	</tr>
@@ -120,13 +124,15 @@
 		                				<%= form.submit "Search", class: "d-none", id: "like_submit#{match.id}" %>
 		            				<% end %>
 	            				</td>
-	            				<td colspan="100%" class="vote-form">
-	        					 	<%= form_with(url: visitor_vote_match_path, method: "get", remote: false) do |form| %>
-		                				<%= form.hidden_field(:id, value: match.id) %>
-							        	<%= form.collection_select :vote_player, [match.player_1] + [match.player_2], :id, :name, {include_blank: true} %>
-		                				<%= form.submit "Votar!"%>
-		            				<% end %>
-	            				</td>
+								<% if match.player_1.present? && match.player_2.present? %>
+		            				<td colspan="100%" class="vote-form">
+		        					 	<%= form_with(url: visitor_vote_match_path, method: "get", remote: false) do |form| %>
+			                				<%= form.hidden_field(:id, value: match.id) %>
+								        	<%= form.collection_select :vote_player, [match.player_1] + [match.player_2], :id, :name, {include_blank: true} %>
+			                				<%= form.submit "Votar!"%>
+			            				<% end %>
+		            				</td>
+		            			<% end %>
 			          		</tr>
 				        </tbody>
 			      	</table>
