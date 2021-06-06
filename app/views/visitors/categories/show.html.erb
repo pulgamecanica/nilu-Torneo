@@ -11,6 +11,10 @@
   <p class="text-center mb-2"> <%= @category.start_date.strftime("%d/%m") %> - <%= @category.end_date.strftime("%d/%m") %> </p>
   	<div class="text-center">
 		<button onclick="newSuggestion()" class="btn btn-info col-md-3 col-sm-6">Sugerencias!</button>
+		<br>
+		<% if @category.brackets_link.present? %>
+			<button onclick="show_brackets()" class="btn btn-secondary col-md-3 col-sm-6 mt-1">Brackets!</button>
+		<% end %>
 	</div>
 </div>
 <% if @background.present? %>
@@ -99,6 +103,12 @@
 		</div>
 	</div>
 </div>
+<% if @category.brackets_link.present? %>
+	<div id="brackets">
+		<iframe src="<%= @category.brackets_link %>" allowfullscreen frameborder="0"></iframe>
+		<i class="fas fa-times-circle" onclick="closeImage()"></i>
+	</div>
+<% end %>
 <span id="imageWindowDisplayer" class="text-center p-5">
 	<%= form_with(url: visitor_category_suggestion_path, method: "get", remote: false) do |form| %>
 		<h2>Sugerencia</h2>
@@ -146,13 +156,18 @@ function changeBackgroundImage(){
 function newSuggestion() {
 	document.getElementById("main-wrapper").style.opacity = 0.3;
 	document.getElementById("background_image_container").style.opacity = 0.3;
-	var windowDisplayer = document.getElementById('imageWindowDisplayer');
-	windowDisplayer.style.display = "block";
+	document.getElementById('imageWindowDisplayer').style.display = "block";
 }
 function closeImage() {
 	document.getElementById("main-wrapper").style.opacity = 1;
 	document.getElementById("background_image_container").style.opacity = 1;
 	document.getElementById('imageWindowDisplayer').style.display = "none";
+	document.getElementById('brackets').style.display = "none";
+}
+function show_brackets() {
+	document.getElementById("main-wrapper").style.opacity = 0.3;
+	document.getElementById("background_image_container").style.opacity = 0.3;
+	document.getElementById('brackets').style.display = "block";
 }
 $(document).keydown(function(e) {
 	if (e.keyCode == 27) 

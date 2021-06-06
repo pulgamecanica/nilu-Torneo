@@ -32,6 +32,8 @@ gem 'devise'
 
 gem 'image_processing'
 
+gem 'rails_same_site_cookie'
+
 gem "aws-sdk-s3", require: false
 
 

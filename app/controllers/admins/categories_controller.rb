@@ -56,7 +56,7 @@ module Admins
 
       # Only allow a list of trusted parameters through.
       def category_params
-        params.require(:category).permit(:title, :description, :active, :min_rank, :max_rank, :register_link, :start_date, :end_date, :category_image)
+        params.require(:category).permit(:title, :description, :active, :min_rank, :max_rank, :register_link, :brackets_link, :start_date, :end_date, :category_image)
       end
   end
 end

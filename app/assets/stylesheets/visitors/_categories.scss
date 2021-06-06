@@ -181,6 +181,30 @@ html {
 					font-size: 250%;
 				}
 			}
+			#brackets {
+				position: fixed;
+				display: none;
+				z-index: 10;
+				top: 5%;
+				left: 5%;
+				height: 90%;
+				width: 90%;
+				iframe {
+					width: 100%;
+					height: 100%;
+				}
+				i {
+					cursor: pointer;
+					position: absolute;
+					top: -5px;
+					right: -5px;
+					font-size: 200%;
+					color: red;
+				}
+				i:hover {
+					font-size: 250%;
+				}
+			}
 			#footer {
 				z-index: 999;
 				position: fixed;
@@ -227,17 +251,6 @@ html {
 						visibility: visible;
   						opacity: 1;
 					}
-				}
-			}
-		}
-	}
-}
-@media (min-width: 1200px) {
-	.big-container {
-		.box-container {
-			#players-container{
-				.like-player-button {
-					
 				}
 			}
 		}
