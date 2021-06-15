@@ -10,12 +10,24 @@
                 <%= game_match.date.strftime("%m/%d/%Y")%> 
               </p> 
               <span class="card-title text-secondary h4">
-                <% if game_match.player_1.present? %>
-                  <%= game_match.player_1.name %> <!-- (<= game_match.player_1.rank >) -->
-                <% end %>
-                <% if game_match.player_2.present? %>
-                  <span class="text-info">vs</span>
-                  <%= game_match.player_2.name %> <!-- (<= game_match.player_2.rank >) -->
+                <% if (game_match.player_1.present? && game_match.player_2.present?) && (game_match.player_1.eql?(game_match.winner) || game_match.player_2.eql?(game_match.winner)) %>
+                  <% if game_match.player_1.eql?(game_match.winner) %>
+                    <span class="text-success"><%= game_match.player_1.name %></span> <!-- (<= game_match.player_1.rank >) -->
+                    <span>vs</span>
+                    <span class="text-danger"><%= game_match.player_2.name %></span> <!-- (<= game_match.player_2.rank >) -->
+                  <% else %>
+                    <span class="text-danger"><%= game_match.player_1.name %></span> <!-- (<= game_match.player_1.rank >) -->
+                    <span>vs</span>
+                    <span class="text-success"><%= game_match.player_2.name %></span> <!-- (<= game_match.player_2.rank >) -->
+                  <% end %> 
+                <% else %>
+                  <% if game_match.player_1.present? %>
+                    <%= game_match.player_1.name %> <!-- (<= game_match.player_1.rank >) -->
+                  <% end %>
+                  <% if game_match.player_2.present? %>
+                    <span class="text-info">vs</span>
+                    <%= game_match.player_2.name %> <!-- (<= game_match.player_2.rank >) -->
+                  <% end %>
                 <% end %>
               </span>
             </div>
