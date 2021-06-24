@@ -33,7 +33,7 @@
 	  		<% end %>
 	  	</div>
 	  	<div class="box e">
-	  		<h3>Matches</h3>
+	  		<h3>Partidas</h3>
 	  		<hr>
 	  		<% @player.player_1_matches.or(@player.player_2_matches).order(:round).each do |match| %>
 	  			<div class="match-container">

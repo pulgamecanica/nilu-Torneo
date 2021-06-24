@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_06_06_151304) do
+ActiveRecord::Schema.define(version: 2021_06_24_122708) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(version: 2021_06_06_151304) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "match_comments", force: :cascade do |t|
+    t.string "descrption"
+    t.bigint "match_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["match_id"], name: "index_match_comments_on_match_id"
+  end
+
   create_table "matches", force: :cascade do |t|
     t.datetime "date"
     t.bigint "category_id", null: false
@@ -143,6 +151,7 @@ ActiveRecord::Schema.define(version: 2021_06_06_151304) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "match_comments", "matches"
   add_foreign_key "matches", "categories"
   add_foreign_key "matches", "players", column: "player_1_id"
   add_foreign_key "matches", "players", column: "player_2_id"
