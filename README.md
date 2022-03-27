@@ -1,5 +1,6 @@
 # NILUTORNEO
 
+
 ## Tournament's manager
 
 ---
@@ -47,3 +48,11 @@
 🔷 Random Background 🎲 🖼️
 
 🔷 AOE2(Age Of Empires II) Themed (Borders, backgrounds etc)
+
+🔸    [ruby '2.7.2'](https://www.ruby-lang.org/es/)
+🔸    [rails '6.1.3'](https://rubyonrails.org/)
+🔸    [postgresql '1.1'](https://www.postgresql.org/)
+🔸    [SASS (SCSS)](https://sass-lang.com/)
+🔸    [devise](https://github.com/heartcombo/devise/wiki)
+🔸    [aws (images storage)](https://aws.amazon.com/)
+🔸    [optimism "0.4.2"](https://github.com/leastbad/optimism)
